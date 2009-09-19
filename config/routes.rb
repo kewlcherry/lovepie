@@ -30,9 +30,9 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
   
-  map.resource :user_session
-  map.root :controller => "user_sessions", :action => "new"
+  map.root :controller => "landing"
   
+  map.resource :user_session
   map.resource :account, :controller => "users"
   map.resources :users
   
