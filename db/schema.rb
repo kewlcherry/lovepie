@@ -9,12 +9,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090919165049) do
+ActiveRecord::Schema.define(:version => 20090919212222) do
+
+  create_table "causes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mappings", :force => true do |t|
+    t.integer  "cause_id"
+    t.integer  "user_id"
+    t.integer  "organisation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organisations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "paypal_id"
+    t.string   "logo"
+    t.string   "desc"
   end
 
   create_table "taggings", :force => true do |t|
