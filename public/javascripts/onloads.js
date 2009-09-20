@@ -4,6 +4,8 @@ $(document).ready(function () {
     My.List.Filter('input#search_filter_org', '#filtered-org>ul>li>span.name');
 	  $("#tag-data").tabs({ fx: { opacity: 'toggle' } }).tabs();
 
+		$("#filtered-cause li").draggable({revert: true,  zIndex: 99999 });
+
 		var containerHeight = $("ul#invisible-overlay").height();
 		var heartItems = $('ul#invisible-overlay');
 		var currentItemIndex = 0;
@@ -71,4 +73,16 @@ $(document).ready(function () {
 
 			$.fn.findMax();
 		});	
+		
+		$("#tag-data li").mouseup(function(){
+			$(this).css("position","static");
+		 	$(this).css("z-index","100");
+		    }).mousedown(function(){
+			 	$(this).css("position","absolute");
+			 	$(this).css("z-index","9999");			
+		});
+		
+		
+		
+		
 	});
