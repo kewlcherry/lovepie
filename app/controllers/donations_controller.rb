@@ -18,6 +18,7 @@ class DonationsController < ApplicationController
     @causes.each do |cause|
       @donation.donation_percentages<<DonationPercentage.new(:cause_id => cause["cause_id"], :percentage => cause["amount"])
     end
+    redirect_to :action => 'about'
   end
   
   def about
