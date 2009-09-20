@@ -33,5 +33,5 @@
   <%=h @user.current_login_ip %>
 </p>
 
-
+<%= link_to 'logout', user_session_path, :method => :delete %>
 <%= link_to 'Edit', edit_account_path %>
