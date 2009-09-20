@@ -1,36 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <title>Untitled Document</title>
-    </head>
-    <body>
-        <h1>How do we pay out?</h1>
+<div id="about">
+    <h1>How do we pay out?</h1>
+    <p>
+        lovep.ie distributes the total amount of money against all organisations depending on the number of tags users have inputed against them.
+    </p>
+    <h2><strong>£<%= @payed %></strong> has been payed out already.</h2>
+    <br/>
+    <h2><strong>£<%= @unpayed %></strong> will be payed out on probably after Charity hack 2011</h2>
+    <br/>
+    Among <b>£<%= @unpayed %></b>, we will split it according to the causes defined by you for which we can drill down into the following categories:<% @causes.each_with_index do |cause, i| %>
+    <ul>
+        <span>For the cause <strong><%= cause.name %></strong>, we will pay out <b>£<%= @amounts[i+1] %></b></span>
         <p>
-            lovep.ie distributes the total amount of money against all organisations depending on the number of tags users have inputed against them. It all sounds complicated but in all
-            it is quite simple. Lets take an exemple: 
-            if we have 
+        Within this cause, we have the following organisations: <% u=Cause.find_by_mapp2(cause.id).count_all %>
         </p>
-        <h2>Last payout</h2>
-        <p>
-        The following 
-        </P>
-        £<%= @payed %> has been payed out already.
+        <% Mapping.count(:all, :conditions => {:cause_id => cause.id}, :group => :organisation_id).each do |test| %>
+        <li>
+        <%= Organisation.find(test[0]).name %>will receive <b>£<%= (test[1].to_f * @amounts[i+1].to_f / u.to_f).round(2) %></b>
         <br/>
-        £<%= @unpayed %> will be payed out on probably after Charity hack 2011
-        <br/>
-        Among <b>£<%= @unpayed %></b>, we will split it according to the causes defined by you for which we can drill down into the following categories:
-		<% @causes.each_with_index do |cause, i| %>
-	        <ul>
-	        For the cause <strong><%= cause.name %></strong>, we will pay out <b>£<%= @amounts[i+1] %></b>
-	        <br/>
-	        Within this cause, we have the following organisations:  <% u=Cause.find_by_mapp2(cause.id).count_all %>
-	        <br/>
-		        <% Mapping.count(:all, :conditions => {:cause_id => cause.id}, :group => :organisation_id).each do |test| %>
-			        <li><%= Organisation.find(test[0]).name %> will receive <b>£<%= (test[1].to_f * @amounts[i+1].to_f / u.to_f).round(2) %></b>
-			        <br/>
-		        <% end %>
-			</ul>
-		<% end %>
-    </body>
-</html>
+        <% end %>
+    </ul>
+    <% end %>
+</div>
