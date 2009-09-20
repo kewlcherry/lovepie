@@ -10,15 +10,14 @@ $(document).ready(function () {
         drop: function(ev, ui) {
             $('#invisible-overlay li:last').resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.four', maxWidth: 400, minWidth: 400, minHeight: 30 });
             $('#invisible-overlay').append('<li>' + $(ui.draggable).text() + '</li>');
-            $('#beneath-image').append('<li class="' + $(ui.draggable).attr('id') + '">' + $(ui.draggable).text() + '</li>');
+            $('#beneath-image').append('<li class="' + $(ui.draggable).attr('id') + '"></li>');
             $('#filtered-cause li#' + $(ui.draggable).attr('id')).remove();
         }
     });
 
-    $("#payment").click(function() {
-        alert("Payment!");
+    $("#new_donation").click(function() {
+       $("#new_donation #amount").val($('#totalMoney').val());
     });
-
 
     var containerHeight = $("ul#invisible-overlay").height();
     var currentItemIndex = 0;
