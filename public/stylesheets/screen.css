@@ -92,3 +92,42 @@ height: 400px;
 width: 258px;
 overflow: auto;
 }
+
+
+#about {
+	text-align: right;
+}
+#about h1 {
+	font-size:2em;
+}
+#about p {
+	font-size:1.2em;
+}
+#about ul {
+	float:left;
+	width: 300px;
+	padding: 5px;
+	margin: 5px;
+}
+#about ul span {
+	font-size:1.8em;
+}
+#about ul span strong {
+	color: #66CD00;
+}
+#about ul span b {
+	color: #66CD00;
+	font-weight: bold;
+}
+#about li {
+	line-height:2em;
+}
+
+#about h2 {
+	font-size: 1.4em;
+}
+#about h2 strong {
+	background: #66CD00;
+	font-size: 1.8em;
+	color:#F5F5F5;
+}

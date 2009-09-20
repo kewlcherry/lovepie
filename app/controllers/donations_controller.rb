@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  layout "default"
   before_filter :require_user, :only => [:create]
   
   def index
