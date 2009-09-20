@@ -71,7 +71,7 @@ $(document).ready(function () {
         $.fn.findMax();
     });
 
-    $("#tag-data li").mouseup(function() {
+    $("#filtered-cause li, filtered-org li").mouseup(function() {
         $(this).css("position", "static");
         $(this).css("z-index", "100");
     }).mousedown(function() {
