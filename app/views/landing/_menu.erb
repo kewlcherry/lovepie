@@ -9,7 +9,7 @@
 		<div id="filtered-cause">
   			<ul>
     			<% @causes.each do |cause| %>
-        			<li><span class="name"><%= cause.name %></span> (<%= cause.count_all %>)</li>
+        			<li id="<%= cause.id %>"><span class="name"><%= cause.name %></span> (<%= cause.count_all %>)</li>
     				<% end %>
   			</ul>
 		</div>
