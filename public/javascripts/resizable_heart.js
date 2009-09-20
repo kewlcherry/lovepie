@@ -7,9 +7,9 @@
 	var bottomOfContainer = 313;
 	var lastHeightSubtraction = 0;
 
-	$("#invisible-overlay li.one").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.one', maxWidth: 699, minWidth: 699, minHeight: 30 });
-	$("#invisible-overlay li.two").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.two', maxWidth: 699, minWidth: 699, minHeight: 30});	
-	$("#invisible-overlay li.three").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.three', maxWidth: 699, minWidth: 699, minHeight: 30});
+	$("#invisible-overlay li.one").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.one', maxWidth: 400, minWidth: 400, minHeight: 30 });
+	$("#invisible-overlay li.two").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.two', maxWidth: 400, minWidth: 400, minHeight: 30});	
+	$("#invisible-overlay li.three").resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.three', maxWidth: 400, minWidth: 400, minHeight: 30});
 	
 	$("#invisible-overlay li").resize(function(){
 		$.fn.adjustLastElements();
