@@ -8,8 +8,14 @@ class DonationsController < ApplicationController
   end
   
   def create
-    @p = parameters[:division]
-    d = ActiveSupport::JSON.decode(@p)
+    @donation = Donation.new(params[:donation])
+    @donation.user=@current_user
+    @donation.has_been_payed=false
+    @donation.save
+    @causes = ActiveSupport::JSON.decode(params[:causes])
+    @causes.each do |cause|
+      @donation.donation_percentages<<DonationPercentage.new(:cause_id => cause["cause_id"], :percentage => cause[:amount])
+    end
   end
   
   def about
