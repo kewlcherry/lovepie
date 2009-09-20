@@ -1,7 +1,8 @@
 class LandingController < ApplicationController
 
   def index
-    @organisation = Organisation.all
+    @organisations = Organisation.all
+    @causes = Cause.all
   end
   
   
