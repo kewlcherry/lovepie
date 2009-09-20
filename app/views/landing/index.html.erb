@@ -14,25 +14,21 @@
 <body>
 <div id="container">
 	<div id="header" class="row">
-  		<div class="column grid_10"><img src="/images/logo.png"/></div>
-  		<div id="menu" class="column grid_3"><p><a href="#">API</a> | <a href="#">Login</a> | <a href="#">About</a></p></div>
+		<%= render 'landing/_header' %>		
 	</div>
 
 	<div id="middle" class="row">
   		<div id="side-bar" class="column grid_4">
-				<%= render 'landing/_menu' %>
+			<%= render 'landing/_menu' %>
 		</div>
   		<div class="column grid_7">
-			<form id="moneyForm" action="" method="post">
-				<input id="totalMoney" name="totalMoney" type="text" value="£100.00" />
-			</form>
-			<p>Kevin's heart</p>
+			<%= render 'landing/_moneyform' %>
+			<%= render 'landing/_heart' %>
 		</div>
 	</div>
 
 	<div id="footer" class="row">
-  			<div class="column grid_10"><p>&nbsp;</p></div>
-  			<div class="column grid_2"><p><a href="#">Make Payment</a></p></div>
+		<%= render 'landing/_footer' %>
 	</div>
 </div>
 </body>
