@@ -1,7 +1,7 @@
 #giving-pool{
 	display:block;
-	height:419px;
-	width:699px;
+	height:354px;
+	width:400px;
 	background:green;	
 }
 
@@ -15,8 +15,8 @@ li#invisible-overlay, li#beneath-image {
 }
 /*Set bounds for both lists */
 ul#invisible-overlay, ul#beneath-image {
-	height:419px;
-	width:699px;
+	height:354px;
+	width:400px;
 	display:block;
 	margin-left: 0;
 	padding-left: 0;
@@ -36,7 +36,7 @@ ul#invisible-overlay {
 }
 ul#beneath-image {
 	position:relative;
-	margin-top:-419px;
+	margin-top:-354px;
 	z-index:1;
 }
 	#invisible-overlay li.one, #beneath-image li.one{height:10%;}
