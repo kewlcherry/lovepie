@@ -1,6 +1,72 @@
-<h3>Causes / Organisations</h3>
-<ul>
-  <% @causes.each do |cause| %>
-      <li><%=cause.name %> (<%= cause.count_all %>)</li>
-  <% end %>
-</ul>
+<script type="text/javascript">
+    var My = {};
+    My.List = {
+        Filter : function (inputSelector, listSelector) {
+
+            // Sanity check
+            var inp, rgx = new RegExp(), titles = $(listSelector), keys;
+            if (titles.length === 0) {
+                return false;
+            }
+
+            // The list with keys to skip (esc, arrows, return, etc)
+            // 8 is backspace, you might want to remove that for better usability
+            keys = [ 13, 27, 32, 37, 38, 39, 40 ];
+
+            // binding keyup to the unordered list
+            $(inputSelector).bind('keyup', function (e) {
+                if (jQuery.inArray(e.keyCode, keys) >= 0) {
+                    return false;
+                }
+
+                // Building the regex from our user input, 'inp' should be escaped
+                inp = $(this).attr('value');
+                try {
+                    rgx.compile(inp, 'im');
+
+                    // a MUCH faster implementation, thanks to Boy Baukema
+                    for (var i = 0; i < titles.length; i++) {
+                        if (rgx.source !== '' && !rgx.test(titles[i].innerHTML)) {
+                            titles[i].parentNode.style.display = 'none';
+                        } else {
+                            titles[i].parentNode.style.display = '';
+                        }
+                    }
+                    // Silently ignore possible bad regex
+                } catch(e) {
+                }
+            });
+        }
+    };
+
+    // When the DOM is ready
+    $(document).ready(function () {
+        // Attach the filter to our input and list
+        My.List.Filter('input#search_filter_cause', '#filtered-cause>ul>li>span');
+        My.List.Filter('input#search_filter_org', '#filtered-org>ul>li>span.name');
+    });
+</script>
+
+<h3>Causes</h3>
+Filter Causes: <input type="text" name="filter-cause" id="search_filter_cause"/>
+<div id="filtered-cause">
+  <ul>
+    <% @causes.each do |cause| %>
+        <li><span class="name"><%= cause.name %></span> (<%= cause.count_all %>)</li>
+    <% end %>
+  </ul>
+</div>
+
+<h3>Organisations</h3>
+Filter Causes: <input type="text" name="filter-org" id="search_filter_org"/>
+<div id="filtered-org">
+  <ul>
+    <% @organisations.each do |org| %>
+        <li><img width="50" height="25" src="<%= org.logo %>"/> <span class="name"><%= org.name %></span>
+        <span style="font-style: italic;">
+    <% org.causes.each do |cause| %>
+        <br/><%= cause.name %>
+    <% end %></span></li>
+    <% end %>
+  </ul>
+</div>
