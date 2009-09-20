@@ -46,27 +46,31 @@
         My.List.Filter('input#search_filter_org', '#filtered-org>ul>li>span.name');
     });
 </script>
-
-<h3>Causes</h3>
-Filter Causes: <input type="text" name="filter-cause" id="search_filter_cause"/>
-<div id="filtered-cause">
-  <ul>
-    <% @causes.each do |cause| %>
-        <li><span class="name"><%= cause.name %></span> (<%= cause.count_all %>)</li>
-    <% end %>
-  </ul>
+<div id="tab-one">
+	<h3>Causes</h3>
+	Filter Causes: <input type="text" name="filter-cause" id="search_filter_cause"/>
+	<div id="filtered-cause">
+  		<ul>
+    		<% @causes.each do |cause| %>
+        		<li><span class="name"><%= cause.name %></span> (<%= cause.count_all %>)</li>
+    			<% end %>
+  		</ul>
+	</div>
 </div>
 
-<h3>Organisations</h3>
-Filter Causes: <input type="text" name="filter-org" id="search_filter_org"/>
-<div id="filtered-org">
-  <ul>
-    <% @organisations.each do |org| %>
-        <li><img width="50" height="25" src="<%= org.logo %>"/> <span class="name"><%= org.name %></span>
-        <span style="font-style: italic;">
-    <% org.causes.each do |cause| %>
-        <br/><%= cause.name %>
-    <% end %></span></li>
-    <% end %>
-  </ul>
+<div id="tab-two">
+	<h3>Organisations</h3>
+	Filter Causes: <input type="text" name="filter-org" id="search_filter_org"/>
+	<div id="filtered-org">
+		<ul>
+			<% @organisations.each do |org| %>
+				<li><img width="50" height="25" src="<%= org.logo %>"/> <span class="name"><%= org.name %></span>
+					<span style="font-style: italic;">
+					<% org.causes.each do |cause| %>
+					<br/><%= cause.name %>
+					<% end %></span>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </div>

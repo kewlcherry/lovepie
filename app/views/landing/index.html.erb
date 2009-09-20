@@ -8,8 +8,6 @@
   <link href="/stylesheets/grid.css" type="text/css" rel="stylesheet" media="screen"/>
   <script type="text/javascript" src="http://www.google.com/jsapi"></script>
   <script type="text/javascript">google.load("jquery", "1.3.1");</script>
-
-
   <link href="/stylesheets/screen.css" type="text/css" rel="stylesheet" media="screen"/>
 </head>
 <body>
@@ -20,21 +18,23 @@
 	</div>
 
 	<div id="middle" class="row">
-  		<div class="column grid_4">
-  		<%= render 'landing/_menu' %>
-  		</div>
+  		<div id="side-bar" class="column grid_4">
+  			<div id="tag-data">
+				<%= render 'landing/_menu' %>
+  			</div>  		
+		</div>
   		<div class="column grid_7">
 			<form id="moneyForm" action="" method="post">
-				<input id="totalMoney" name="totalMoney" type="text" />
+				<input id="totalMoney" name="totalMoney" type="text" value="£100.00" />
 			</form>
 			<p>Kevin's heart</p>
-			</div>
-		</div>
-
-		<div id="footer" class="row">
-  			<div class="column grid_10"><p>&nbsp;</p></div>
-  			<div class="column grid_2"><p><a href="#">Make Payment</a></p></div>
 		</div>
 	</div>
+
+	<div id="footer" class="row">
+  			<div class="column grid_10"><p>&nbsp;</p></div>
+  			<div class="column grid_2"><p><a href="#">Make Payment</a></p></div>
+	</div>
+</div>
 </body>
 </html>
