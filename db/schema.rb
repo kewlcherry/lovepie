@@ -9,10 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090919225146) do
+ActiveRecord::Schema.define(:version => 20090920013256) do
 
   create_table "causes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "donation_percentages", :force => true do |t|
+    t.integer  "donation_id"
+    t.integer  "percentage"
+    t.integer  "cause_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "donations", :force => true do |t|
+    t.integer  "amount"
+    t.boolean  "has_been_payed"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
