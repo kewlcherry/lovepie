@@ -4,6 +4,7 @@ class LandingController < ApplicationController
   def index
     @organisations = Organisation.all
     @causes = Cause.find_by_mapp
+    @donation = Donation.new
   end
   
   def add_organisation_to_cause
