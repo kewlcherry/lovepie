@@ -31,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
   
   map.root :controller => "landing"
+  map.resource :donations
   
   map.resource :user_session
   map.resource :account, :controller => "users"

@@ -1,9 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>Untitled Document</title>
-	</head>
-	<body>
-	</body>
-</html>
+<h1>payment</h1>
+
+<% form_for @donation, :url => {:controller => 'donations', :action => 'create'} do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :amount %><br />
+<%= f.text_field :amount %><br />
+<input id="causes" type="text" value='[{ "cause_id" : 1, "amount" : 2 },{ "cause_id" : 2, "amount" : 8 }]' size="30" name="causes"/>
+
+<br />
+
+  <%= f.submit "Register" %>
+<% end %>
+
+<script>
+	var myFirstJSON = { "firstName" : "John",
+                    "lastName"  : "Doe",
+                    "age"       : 23 };
+
+</script>
