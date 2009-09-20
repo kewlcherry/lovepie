@@ -1,6 +1,7 @@
 class DonationsController < ApplicationController
+  before_filter :require_user, :only => [:create]
+  
   def index
-    
   end
   
   def new

@@ -1,20 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>Untitled Document</title>
-	</head>
-	<body>
-		£<%= @payed %> has been payed<br />
-		£<%= @unpayed %> to be payed out from which<br />
-		
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Untitled Document</title>
+    </head>
+    <body>
+        <h1>How do we pay out?</h1>
+        <p>
+            lovep.ie distributes the total amount of money against all organisations depending on the number of tags users have inputed against them. It all sounds complicated but in all
+            it is quite simple. Lets take an exemple: 
+            if we have 
+        </p>
+        <h2>Last payout</h2>
+        <p>
+        The following 
+        </P>
+        £<%= @payed %> has been payed out already.
+        <br/>
+        £<%= @unpayed %> will be payed out on probably after Charity hack 2011
+        <br/>
+        Among <b>£<%= @unpayed %></b>, we will split it according to the causes defined by you for which we can drill down into the following categories:
 		<% @causes.each_with_index do |cause, i| %>
-			For the cause <b><%= cause.name %></b>, we will pay out £<%= @amounts[i+1] %> <br />
-			--- out of <%= u=Cause.find_by_mapp2(cause.id).count_all %> <br />
-			<% Mapping.count(:all, :conditions => {:cause_id => cause.id}, :group => :organisation_id).each do |test| %>
-			<%= Organisation.find(test[0]).name %> receives <%= test[1] %> out of <%= u %> <br />
-			<% end %>
-			---
+	        <ul>
+	        For the cause <strong><%= cause.name %></strong>, we will pay out <b>£<%= @amounts[i+1] %></b>
+	        <br/>
+	        Within this cause, we have the following organisations:  <% u=Cause.find_by_mapp2(cause.id).count_all %>
+	        <br/>
+		        <% Mapping.count(:all, :conditions => {:cause_id => cause.id}, :group => :organisation_id).each do |test| %>
+			        <li><%= Organisation.find(test[0]).name %> will receive <b>£<%= (test[1].to_f * @amounts[i+1].to_f / u.to_f).round(2) %></b>
+			        <br/>
+		        <% end %>
+			</ul>
 		<% end %>
-	</body>
+    </body>
 </html>
