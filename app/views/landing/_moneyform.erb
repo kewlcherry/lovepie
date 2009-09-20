@@ -1,14 +1,3 @@
 <form id="moneyForm" action="" method="post">
 	<input id="totalMoney" name="totalMoney" type="text" value="£100.00" />
 </form>
-
-<% form_for @donation, :url => {:controller => 'donations', :action => 'create'} do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :amount %><br />
-<%= f.text_field :amount %><br />
-<input id="causes" type="text" value='[{ "cause_id" : 1, "amount" : 2 },{ "cause_id" : 2, "amount" : 8 }]' size="30" name="causes"/>
-
-<br />
-
-  <%= f.submit "Register" %>
-<% end %>
