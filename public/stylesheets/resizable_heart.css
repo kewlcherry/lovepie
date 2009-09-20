@@ -32,7 +32,7 @@ ul#invisible-overlay {
 	background-image:url(../images/heart.png);
 	background-color:transparent;
 	position:relative;
-	z-index:9999;
+	z-index:999;
 }
 ul#beneath-image {
 	position:relative;
