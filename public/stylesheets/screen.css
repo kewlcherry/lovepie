@@ -84,14 +84,7 @@ font-size:30px;
 }
 
 #tag-data{
-height:540px;
-}
-
-#filtered-org{
-height: 400px;
-width: 258px;
-overflow: auto;
-}
+height:800px;
 }
 
 #about {
