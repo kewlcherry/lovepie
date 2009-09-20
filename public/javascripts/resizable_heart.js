@@ -1,13 +1,3 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="stylesheet" type="text/css" href="reset.css">
-<link rel="Stylesheet" type="text/css" href="jquery-ui/css/smoothness/jquery-ui-1.7.2.custom.css" />
-<script type="text/javascript" src="jquery-ui/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.2.custom.min.js"></script>
-<script>
-$(document).ready(function () {
-
 	var containerHeight = $("ul#invisible-overlay").height();
 	var heartItems = $('ul#invisible-overlay');
 	var currentItemIndex = 0;
@@ -78,22 +68,3 @@ $(document).ready(function () {
 	
 	
 });
-</script>
-</head>
-<body>
-	<div id="giving-pool">
-		<ul id="invisible-overlay">
-			<li class="one">one</li>
-			<li class="two">two</li>
-			<li class="three">three</li>
-			<li class="four">four</li>
-		</ul>
-		<ul id="beneath-image">
-			<li class="one">one</li>
-			<li class="two">two</li>
-			<li class="three">three</li>
-			<li class="four">four</li>
-		</ul>	
-	<div>
-</body>
-</html>
