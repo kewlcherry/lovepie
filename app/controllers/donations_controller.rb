@@ -14,7 +14,7 @@ class DonationsController < ApplicationController
     @donation.save
     @causes = ActiveSupport::JSON.decode(params[:causes])
     @causes.each do |cause|
-      @donation.donation_percentages<<DonationPercentage.new(:cause_id => cause["cause_id"], :percentage => cause[:amount])
+      @donation.donation_percentages<<DonationPercentage.new(:cause_id => cause["cause_id"], :percentage => cause["amount"])
     end
   end
   

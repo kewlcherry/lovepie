@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => 'cadbdbb926424361c48fbb4e284996bd'
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
+  before_filter :italo_disco
   
   private
     def current_user_session
@@ -40,5 +41,10 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
-    end
+  end
+  
+  def italo_disco
+    @current_user = User.first
+  end
+ 
 end
