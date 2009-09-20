@@ -5,4 +5,15 @@ doc/app
 .project
 *.tmp_*
 db/*.sqlite3
-
+bin 
+bin/*
+*/bin/*
+gen/*
+*/gen/*
+gen
+.classpath
+.project
+default.*
+.settings/*
+build.properties
+.DS_Store

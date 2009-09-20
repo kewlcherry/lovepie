@@ -1,0 +1,50 @@
+#giving-pool{
+	display:block;
+	height:419px;
+	width:699px;
+	background:green;	
+}
+
+/*Reset list elements */
+ul#invisible-overlay, ul#beneath-image,
+li#invisible-overlay, li#beneath-image {
+	list-style: none;
+	margin-left: 0;
+	padding:0;
+	margin:0;
+}
+/*Set bounds for both lists */
+ul#invisible-overlay, ul#beneath-image {
+	height:419px;
+	width:699px;
+	display:block;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+/*
+* Item Stying for the lists
+* Invisible block element ul on top, 
+* Each li is mirrored below showing colours 
+* through a stencil template 
+*/ 
+ul#invisible-overlay {
+	background-image:url(heart.png);
+	background-color:transparent;
+	position:relative;
+	z-index:9999;
+}
+ul#beneath-image {
+	position:relative;
+	margin-top:-419px;
+	z-index:1;
+}
+	#invisible-overlay li.one, #beneath-image li.one{height:10%;}
+	#invisible-overlay li.two, #beneath-image li.two{height:40%;}
+	#invisible-overlay li.three, #beneath-image li.three{height:25%;}
+	#invisible-overlay li.four, #beneath-image li.four{height:25%;}
+
+	#beneath-image li.one{background-color:blue;}
+	#beneath-image li.two{background-color:yellow;}
+	#beneath-image li.three{background-color:aquamarine;}
+	#beneath-image li.four{background-color:coral;}
