@@ -8,11 +8,10 @@ $(document).ready(function () {
     $("#giving-pool").droppable({
         accept: "li",
         drop: function(ev, ui) {
-            //alert("dropped: " + $(ui.draggable).attr('id'));
-
             $('#invisible-overlay li:last').resizable({ containment: '#invisible-overlay', alsoResize: '#beneath-image li.four', maxWidth: 400, minWidth: 400, minHeight: 30 });
             $('#invisible-overlay').append('<li>' + $(ui.draggable).text() + '</li>');
             $('#beneath-image').append('<li class="' + $(ui.draggable).attr('id') +'">' + $(ui.draggable).text() + '</li>');
+            //$('#filtered-cause').children().remove('#' + $(ui.draggable).attr('id'));
         }
     });
 
