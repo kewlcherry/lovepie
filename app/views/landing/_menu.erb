@@ -1,16 +1,6 @@
-<% @causes.each do |cause| %>
-	<%= cause.count_all %>
-	<% end %>
-    <h3>Causes / Organisations</h3>
-    <ul>
-      <li>Children</li>
-      <ul>
-        <li>Unicef</li>
-        <li>Save the Children</li>
-      </ul>
-      <li>Other</li>
-      <ul>
-        <li>Charity 1</li>
-        <li>Charity 2</li>
-      </ul>
-    </ul>
+<h3>Causes / Organisations</h3>
+<ul>
+  <% @causes.each do |cause| %>
+      <li><%=cause.name %> (<%= cause.count_all %>)</li>
+  <% end %>
+</ul>
