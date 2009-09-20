@@ -10,4 +10,12 @@ class Cause < ActiveRecord::Base
       :group => 'causes.id',
       :order => 'count_all DESC')
   end
+  
+  def self.find_by_mapp2(test)
+    Cause.find(test, 
+      :select => 'causes.*, count(causes.id) AS count_all',
+      :joins => :mappings, 
+      :group => 'causes.id',
+      :order => 'count_all DESC')
+  end
 end

@@ -21,5 +21,7 @@ class DonationsController < ApplicationController
   def about
     @unpayed = Donation.sum(:amount, :conditions => !:has_been_payed)
     @payed = Donation.sum(:amount, :conditions => :has_been_payed)
+    @amounts = DonationPercentage.sum(:percentage, :group => :cause_id, :joins => :cause)
+    @causes = Cause.find(@amounts.collect {|sa| sa[0]})
   end
 end

@@ -5,7 +5,16 @@
 		<title>Untitled Document</title>
 	</head>
 	<body>
-		<%= @payed %>
-		<%= @unpayed %>
+		£<%= @payed %> has been payed<br />
+		£<%= @unpayed %> to be payed out from which<br />
+		
+		<% @causes.each_with_index do |cause, i| %>
+			For the cause <b><%= cause.name %></b>, we will pay out £<%= @amounts[i+1] %> <br />
+			--- out of <%= u=Cause.find_by_mapp2(cause.id).count_all %> <br />
+			<% Mapping.count(:all, :conditions => {:cause_id => cause.id}, :group => :organisation_id).each do |test| %>
+			<%= Organisation.find(test[0]).name %> receives <%= test[1] %> out of <%= u %> <br />
+			<% end %>
+			---
+		<% end %>
 	</body>
 </html>
