@@ -1,5 +1,6 @@
 #giving-pool{
 	display:block;
+margin:20px 0 0 60px;
 	height:354px;
 	width:400px;
 	background:green;	
@@ -32,8 +33,17 @@ ul#invisible-overlay {
 	background-image:url(../images/heart.png);
 	background-color:transparent;
 	position:relative;
+font-size:20px;
+font-weight:bold;
+text-align:center;
 	z-index:999;
 }
+
+ul#invisible-overlay li{
+padding:2px 0 0 0;
+}
+
+
 ul#beneath-image {
 	position:relative;
 	margin-top:-354px;
