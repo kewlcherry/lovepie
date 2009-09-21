@@ -126,7 +126,7 @@ background: #F5F5F5;
 	height:32px;
 	font-size:26px;
 	width:9.3em;
-border: solid #363636;
+border: solid #8B7765;
 border-right-width:1px;
 border-right-color:#D9D9D9;
 border-left-width:1px;
@@ -143,7 +143,7 @@ background: #F5F5F5;
 	height:32px;
 	font-size:26px;
 	width:9.3em;
-border: solid #363636;
+border: solid #8B7765;
 border-right-width:1px;
 border-right-color:#D9D9D9;
 border-left-width:1px;
@@ -154,7 +154,8 @@ border-top-color:#D9D9D9;
 }
 #filtered-cause ul li{
 font-size:1em;
-padding:2px 1px 6px 1px;
+padding:2px 1px 4px 1px;
+line-height:1.4em;
 cursor:move;
 }
 #filtered-org ul li{
@@ -163,3 +164,5 @@ margin:10px 1px 6px 1px;
 padding:6px 0 0 0;
 cursor:move;
 }
+
+label.over { color: #8B7765; position: absolute; top: 71px; left: 42px; font-size:1.8em}
