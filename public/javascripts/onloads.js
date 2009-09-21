@@ -3,7 +3,8 @@ $(document).ready(function () {
     My.List.Filter('input#search_filter_cause', '#filtered-cause>ul>li>span');
     My.List.Filter('input#search_filter_org', '#filtered-org>ul>li>span.name');
     $("#tag-data").tabs({ fx: { opacity: 'toggle' } }).tabs();
-
+	$('label').labelOver('over');
+	
     $("#filtered-cause li").draggable({revert: true,  zIndex: 99999 });
     $("#giving-pool").droppable({
         accept: "li",
