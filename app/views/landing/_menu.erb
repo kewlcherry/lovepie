@@ -4,8 +4,8 @@
 		<li><a href="#tag-data-2">Orgs</a></li>
 	</ul>
 	<div id="tag-data-1">
-		<h3>Causes</h3>
-		Filter Causes: <input type="text" name="filter-cause" id="search_filter_cause"/>
+		<label for="filter-cause" class="overlabel">Help what cause?</label>
+		<input name="filter-cause" type="text" id="search_filter_cause"/>
 		<div id="filtered-cause">
   			<ul>
     			<% @causes.each do |cause| %>
@@ -16,8 +16,8 @@
 	</div>
 
 	<div id="tag-data-2">
-		<h3>Organisations</h3>
-		Filter Causes: <input type="text" name="filter-org" id="search_filter_org"/>
+		<label for="filter-org" class="overlabel">Help who?</label>
+		<input name="filter-org" type="text" id="search_filter_org"/>
 		<div id="filtered-org">
 			<ul>
 				<% @organisations.each do |org| %>
