@@ -4,9 +4,4 @@
     <!--<a id="payment" href="#">Make Payment</a>-->
   <!--</p>-->
 
-  <% form_for @donation, :url => {:controller => 'donations', :action => 'create'} do |f| %>
-      <%= f.hidden_field :amount %>
-      <input id="causes" type="hidden" value='[{ "cause_id" : 1, "amount" : 2 },{ "cause_id" : 2, "amount" : 8 }]' size="30" name="causes"/>
-      <%= f.submit "Make Payment >" %>
-  <% end %>
 </div>
