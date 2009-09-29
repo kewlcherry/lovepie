@@ -4,7 +4,7 @@ default_run_options[:pty] = true
 set :repository, "git@github.com:novoda/lovepie.git" 
 set :scm, :git
 set :user, "novoda"
-set :scm_passphrase, "novn1v1da" 
+set :scm_passphrase, "******" 
 
 #set :deploy_via, :remote_cache
 role :web, "lovep.ie" 
