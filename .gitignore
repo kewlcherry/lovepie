@@ -17,3 +17,5 @@ default.*
 .settings/*
 build.properties
 .DS_Store
+*~
+rerun.txt

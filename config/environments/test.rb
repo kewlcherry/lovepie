@@ -23,3 +23,8 @@ config.action_mailer.delivery_method = :test
 
 config.gem "rspec", :lib => false
 config.gem "rspec-rails", :lib => false
+
+config.gem 'cucumber'
+config.gem 'machinist'
+config.gem 'faker'
+
