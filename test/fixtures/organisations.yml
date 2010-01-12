@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+one:
+  name: musicbrainz
+  paypal: donations@musicbrainz.org
+  url: http://musicbrainz.org
+  active: false
+
+two:
+  name: amnesty
+  paypal: donations@amnesty.org
+  url: http://amnesty.org
+  active: false
