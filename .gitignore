@@ -6,3 +6,4 @@ doc/app
 .DS_Store
 .lock
 .idea
+*.sqlite3
