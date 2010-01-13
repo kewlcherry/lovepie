@@ -1,29 +1,37 @@
 require 'spec_helper'
 
 describe Organisation do
-  it { should have_many(:causes)}
-  it { should validate_presence_of (:causes)}
-  it { should validate_presence_of (:paypal)}
-  it { should validate_presence_of (:name)}
-  it { should validate_presence_of (:url)}
+  it { should have_many(:causes).through(:cause_organisations)}
+  it { should validate_presence_of(:causes)}
+  it { should validate_presence_of(:paypal)}
+  it { should validate_presence_of(:name)}
+  it { should validate_presence_of(:url)}
   it { should allow_value("test@example.com").for(:paypal) }
   it { should_not allow_value("test").for(:paypal) }
   it { should allow_value("http://test.com").for(:url) }
   it { should_not allow_value("test.com").for(:url) }
 
-  it "should only allow 1 same tag per organisation" do
-    should_not allow_value(%w{test test}).for(:causes)
+  it "should allow up to no causes upon creation" do
   end
 
-  it "should allow up to 3 tags upon creation" do
+  it "should be able to update cause list with further causes" do
   end
 
-  it "should order by most number of tags" do
+  it "should order by most number of causes" do
   end
 
-  it "should find all organisations with specific tags" do
+  it "should find all organisations with specific causes" do
   end
 
-  
+  describe "querying organisation" do
+    before(:each) do
+      @normal_organisation = Organisation.make(:name => "test")
+    end
+
+    it "should fail for duplicate cause" do
+      @normal_organisation.causes << Cause.make(:name => "test")
+      lambda {@normal_organisation.save}.should raise
+    end
+  end
 
 end
