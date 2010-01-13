@@ -6,7 +6,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @organisations }
+      format.xml { render :xml => @organisations }
     end
   end
 
@@ -17,7 +17,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @organisation }
+      format.xml { render :xml => @organisation }
     end
   end
 
@@ -28,7 +28,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @organisation }
+      format.xml { render :xml => @organisation }
     end
   end
 
@@ -46,10 +46,10 @@ class OrganisationsController < ApplicationController
       if @organisation.save
         flash[:notice] = 'Organisation was successfully created.'
         format.html { redirect_to(@organisation) }
-        format.xml  { render :xml => @organisation, :status => :created, :location => @organisation }
+        format.xml { render :xml => @organisation, :status => :created, :location => @organisation }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @organisation.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @organisation.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,10 +63,10 @@ class OrganisationsController < ApplicationController
       if @organisation.update_attributes(params[:organisation])
         flash[:notice] = 'Organisation was successfully updated.'
         format.html { redirect_to(@organisation) }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @organisation.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @organisation.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -79,7 +79,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(organisations_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end

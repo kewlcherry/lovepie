@@ -1991,3 +1991,353 @@ Migrating to ActsAsTaggableOnMigration (20100113011451)
   [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100111235251')[0m
   [4;36;1mSQL (66.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100112130048')[0m
   [4;35;1mSQL (66.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100112134318')[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-13 16:27:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create, edit, new, show, and update):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-13 16:27:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NoMethodError (undefined method `require_no_user' for #<UsersController:0x7f581550c818>):
+  -e:1:in `load'
+  -e:1
+
+Rendered rescues/_trace (43.8ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOrganisations (20100111235251)
+Migrating to CreateCauses (20100112130048)
+Migrating to CreateCauseOrganisations (20100112134318)
+Migrating to ActsAsTaggableOnMigration (20100113011451)
+Migrating to CreateUsers (20100113161521)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (13.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255) NOT NULL, "single_access_token" varchar(255) NOT NULL, "perishable_token" varchar(255) NOT NULL, "login_count" integer DEFAULT 0 NOT NULL, "failed_login_count" integer DEFAULT 0 NOT NULL, "last_request_at" datetime, "current_login_at" datetime, "last_login_at" datetime, "current_login_ip" varchar(255), "last_login_ip" varchar(255)) [0m
+  [4;36;1mSQL (14.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100113161521')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("cause_organisations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("causes")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("organisations")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_list("taggings")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type_and_context')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("tags")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-13 16:29:48) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering users/new
+Rendered users/_form (2.2ms)
+Completed in 96ms (View: 26, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-13 18:29:13) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-13 18:30:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering users/new
+Rendered users/_form (2.3ms)
+Completed in 101ms (View: 26, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-13 18:35:33) [GET]
+
+ActionController::RoutingError (No route matches "/landing/index" with {:method=>:get}):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-13 18:35:56) [GET]
+
+ActionController::RoutingError (No route matches "/landing/index" with {:method=>:get}):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:37:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.5ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering landing/index
+Completed in 76ms (View: 6, DB: 0) | 200 OK [http://localhost/landing/index]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:37:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.5ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering landing/index
+Completed in 7ms (View: 1, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:37:57) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.4ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering landing/index
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:39:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.4ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 16ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:39:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.5ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:39:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.5ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:51:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.6ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+
+ActionView::TemplateError (undefined local variable or method `session_path' for #<ActionView::Base:0x7f291aa6abb8>) on line #11 of app/views/layouts/default.html.erb:
+8:   <%= stylesheet_link_tag 'scaffold' %>
+9: </head>
+10: <body>
+11: <%= link_to "test", :url => session_path  %>
+12: <p style="color: green"><%= flash[:notice] %></p>
+13: 
+14: <%= yield %>
+
+    app/views/layouts/default.html.erb:11
+    -e:1:in `load'
+    -e:1
+
+Rendered rescues/_trace (38.4ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:54:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.6ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 81ms (View: 72, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:54:09) [GET]
+  Parameters: {"action"=>"index", "url"=>"http://localhost:3000/user_session", "controller"=>"landing"}
+  [4;36;1mCause Load (0.6ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 12ms (View: 2, DB: 1) | 200 OK [http://localhost/landing?url=http%3A%2F%2Flocalhost%3A3000%2Fuser_session]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:55:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.4ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#show (for 127.0.0.1 at 2010-01-13 18:55:22) [GET]
+  Parameters: {"action"=>"show", "controller"=>"user_sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, and new):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-13 18:55:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create, edit, new, show, and update):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 18:55:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.4ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#show (for 127.0.0.1 at 2010-01-13 18:55:40) [GET]
+  Parameters: {"action"=>"show", "controller"=>"user_sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, and new):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:13:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.6ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+
+ActionView::TemplateError (undefined local variable or method `delete_user_session_url' for #<ActionView::Base:0x7f291aa3a918>) on line #13 of app/views/layouts/default.html.erb:
+10: <body>
+11: <%=
+12:     link_to_unless(@current_user.nil?, "Login", user_session_url) do |name|
+13:         link_to(name, delete_user_session_url)
+14:     end
+15: %>
+16: <%= link_to "test", user_session_url %>
+
+    app/views/layouts/default.html.erb:13
+    app/views/layouts/default.html.erb:12
+    -e:1:in `load'
+    -e:1
+
+Rendered rescues/_trace (36.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:15:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.6ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 88ms (View: 79, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-01-13 19:15:45) [DELETE]
+  Parameters: {"action"=>"destroy", "_method"=>"delete", "authenticity_token"=>"pqQpYiGep2XVoTiGEBbcuAFNC9oGHuUGN0+x2uK7BYI=", "controller"=>"user_sessions"}
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 59ms (DB: 0) | 302 Found [http://localhost/user_session]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-13 19:15:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/default
+Rendering user_sessions/new
+Completed in 25ms (View: 10, DB: 0) | 200 OK [http://localhost/user_session/new]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-13 19:17:26) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/default
+Rendering user_sessions/new
+Completed in 23ms (View: 8, DB: 0) | 200 OK [http://localhost/user_session/new]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:17:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.4ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 9ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-13 19:17:34) [GET]
+
+ActionController::RoutingError (No route matches "/sessions/new" with {:method=>:get}):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing UserSessionsController#show (for 127.0.0.1 at 2010-01-13 19:17:40) [GET]
+  Parameters: {"action"=>"show", "controller"=>"user_sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, and new):
+  -e:1:in `load'
+  -e:1
+
+Rendering rescues/layout (not_found)
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:18:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.4ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-13 19:18:03) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/default
+Rendering user_sessions/new
+Completed in 20ms (View: 5, DB: 0) | 200 OK [http://localhost/user_session/new]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-13 19:18:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/default
+Rendering user_sessions/new
+Completed in 26ms (View: 9, DB: 0) | 200 OK [http://localhost/user_session/new]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:18:32) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;35;1mCause Load (0.4ms)[0m   [0mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-01-13 19:18:33) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+  [4;36;1mCause Load (0.4ms)[0m   [0;1mSELECT * FROM "causes" [0m
+Rendering template within layouts/default
+Rendering landing/index
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-13 19:18:36) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/default
+Rendering user_sessions/new
+Completed in 19ms (View: 5, DB: 0) | 200 OK [http://localhost/user_session/new]
