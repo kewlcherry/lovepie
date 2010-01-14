@@ -8418,3 +8418,118 @@ Rendering organisations/edit.html.erb
   [4;36;1mOrganisation Load (0.1ms)[0m   [0;1mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
   [4;35;1mOrganisation Load (0.1ms)[0m   [0mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
   [4;36;1mOrganisation Load (0.1ms)[0m   [0;1mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOrganisations (20100111235251)
+Migrating to CreateCauses (20100112130048)
+Migrating to CreateCauseOrganisations (20100112134318)
+Migrating to ActsAsTaggableOnMigration (20100113011451)
+Migrating to CreateUsers (20100113161521)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255) NOT NULL, "single_access_token" varchar(255) NOT NULL, "perishable_token" varchar(255) NOT NULL, "login_count" integer DEFAULT 0 NOT NULL, "failed_login_count" integer DEFAULT 0 NOT NULL, "last_request_at" datetime, "current_login_at" datetime, "last_login_at" datetime, "current_login_ip" varchar(255), "last_login_ip" varchar(255)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100113161521')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("cause_organisations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("causes")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("organisations")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("taggings")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type_and_context')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("tags")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m
+
+
+Processing OrganisationsController#create (for 0.0.0.0 at 2010-01-13 20:09:39) [POST]
+  Parameters: {"action"=>"create", "organisation"=>{}, "controller"=>"organisations"}
+  [4;35;1mOrganisation Load (0.2ms)[0m   [0mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
+Rendering template within layouts/default
+Rendering organisations/new
+Completed in 106ms (View: 95, DB: 1) | 200 OK [http://test.host/organisations?]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "organisations" [0m
+  [4;36;1mOrganisation Load (0.3ms)[0m   [0;1mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+
+
+Processing OrganisationsController#destroy (for 0.0.0.0 at 2010-01-13 20:09:39) [DELETE]
+  Parameters: {"action"=>"destroy", "id"=>"980190962", "controller"=>"organisations"}
+  [4;35;1mOrganisation Load (0.4ms)[0m   [0mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+  [4;36;1mTagging Load (0.2ms)[0m   [0;1mSELECT * FROM "taggings" WHERE ("taggings".taggable_id = 980190962 AND "taggings".taggable_type = 'Organisation' AND (taggings.context = 'causes')) [0m
+  [4;35;1mTagging Load (0.1ms)[0m   [0mSELECT * FROM "taggings" WHERE ("taggings".taggable_id = 980190962 AND "taggings".taggable_type = 'Organisation') [0m
+  [4;36;1mOrganisation Destroy (0.2ms)[0m   [0;1mDELETE FROM "organisations" WHERE "id" = 980190962[0m
+Redirected to http://test.host/organisations
+Completed in 5ms (DB: 2) | 302 Found [http://test.host/organisations/980190962]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "organisations" [0m
+  [4;36;1mOrganisation Load (0.4ms)[0m   [0;1mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+
+
+Processing OrganisationsController#edit (for 0.0.0.0 at 2010-01-13 20:09:39) [GET]
+  Parameters: {"action"=>"edit", "id"=>"980190962", "controller"=>"organisations"}
+  [4;35;1mOrganisation Load (0.4ms)[0m   [0mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+Rendering template within layouts/default
+Rendering organisations/edit
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/organisations/980190962/edit]
+
+
+Processing OrganisationsController#index (for 0.0.0.0 at 2010-01-13 20:09:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organisations"}
+  [4;36;1mOrganisation Load (0.5ms)[0m   [0;1mSELECT * FROM "organisations" [0m
+Rendering template within layouts/default
+Rendering organisations/index
+Completed in 11ms (View: 9, DB: 1) | 200 OK [http://test.host/organisations]
+
+
+Processing OrganisationsController#new (for 0.0.0.0 at 2010-01-13 20:09:39) [GET]
+  Parameters: {"action"=>"new", "controller"=>"organisations"}
+Rendering template within layouts/default
+Rendering organisations/new
+Completed in 6ms (View: 6, DB: 0) | 200 OK [http://test.host/organisations/new]
+  [4;35;1mOrganisation Load (0.4ms)[0m   [0mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+
+
+Processing OrganisationsController#show (for 0.0.0.0 at 2010-01-13 20:09:39) [GET]
+  Parameters: {"action"=>"show", "id"=>"980190962", "controller"=>"organisations"}
+  [4;36;1mOrganisation Load (0.4ms)[0m   [0;1mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+Rendering template within layouts/default
+Rendering organisations/show
+Completed in 4ms (View: 3, DB: 1) | 200 OK [http://test.host/organisations/980190962]
+  [4;35;1mOrganisation Load (0.4ms)[0m   [0mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+
+
+Processing OrganisationsController#update (for 0.0.0.0 at 2010-01-13 20:09:39) [PUT]
+  Parameters: {"action"=>"update", "id"=>"980190962", "organisation"=>{}, "controller"=>"organisations"}
+  [4;36;1mOrganisation Load (0.4ms)[0m   [0;1mSELECT * FROM "organisations" WHERE ("organisations"."id" = 980190962) [0m
+  [4;35;1mOrganisation Load (0.1ms)[0m   [0mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" = 'musicbrainz' AND "organisations".id <> 980190962) LIMIT 1[0m
+Redirected to http://test.host/organisations/980190962
+Completed in 6ms (DB: 1) | 302 Found [http://test.host/organisations/980190962?]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m
+
+
+Processing OrganisationsController#create (for 0.0.0.0 at 2010-01-13 20:13:08) [POST]
+  Parameters: {"action"=>"create", "organisation"=>{}, "controller"=>"organisations"}
+  [4;35;1mOrganisation Load (0.2ms)[0m   [0mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
+Rendering template within layouts/default
+Rendering organisations/new
+Completed in 41ms (View: 30, DB: 1) | 200 OK [http://test.host/organisations?]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m
+
+
+Processing OrganisationsController#create (for 0.0.0.0 at 2010-01-13 20:16:29) [POST]
+  Parameters: {"action"=>"create", "organisation"=>{}, "controller"=>"organisations"}
+  [4;35;1mOrganisation Load (0.2ms)[0m   [0mSELECT "organisations".id FROM "organisations" WHERE ("organisations"."name" IS NULL) LIMIT 1[0m
+Rendering template within layouts/default
+Rendering organisations/new
+Completed in 45ms (View: 29, DB: 13) | 200 OK [http://test.host/organisations?]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organisations" [0m

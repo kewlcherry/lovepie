@@ -13,6 +13,12 @@
         link_to(@current_user.login, user_url(@current_user))
     end
 %>
+<%=
+    link_to_if(@current_user.nil?, "Sign up!", new_user_url) do
+        link_to("Logout", user_session_url, :method => :delete)
+    end
+%>
+
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>

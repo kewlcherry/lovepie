@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   layout 'default'
+  before_filter :current_user
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

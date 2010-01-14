@@ -32,3 +32,4 @@ config.gem "rspec-rails", :lib => false
 config.gem "thoughtbot-shoulda", :lib => false, :source => 'http://gems.github.com'
 config.gem 'notahat-machinist', :lib => false
 config.gem "faker", :lib => false
+config.gem "webrat", :lib => false, :version => ">= 0.6.0"

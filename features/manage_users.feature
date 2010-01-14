@@ -2,43 +2,34 @@ Feature: Manage users
   In order to [goal]
   [stakeholder]
   wants [behaviour]
-  
-  Scenario: Register new user
-    Given I am on the new user page
-    And I press "Create"
 
-  # Rails generates Delete links that use Javascript to pop up a confirmation
-  # dialog and then do a HTTP POST request (emulated DELETE request).
-  #
-  # Capybara must use Culerity or Selenium2 (webdriver) when pages rely on
-  # Javascript events. Only Culerity supports confirmation dialogs.
-  # 
-  # cucumber-rails will turn off transactions for scenarios tagged with 
-  # @selenium, @culerity, @javascript or @no-txn and clean the database with 
-  # DatabaseCleaner after the scenario has finished. This is to prevent data 
-  # from leaking into the next scenario.
-  #
-  # Culerity has some performance overhead, and there are two alternatives to using
-  # Culerity:
-  #
-  # a) You can remove the @culerity tag and run everything in-process, but then you 
-  # also have to modify your views to use <button> instead: http://github.com/jnicklas/capybara/issues#issue/12
-  #
-  # b) Replace the @culerity tag with @emulate_rails_javascript. This will detect
-  # the onclick javascript and emulate its behaviour without a real Javascript
-  # interpreter.
-  #
-  @culerity
-  Scenario: Delete user
-    Given the following users:
-      ||
-      ||
-      ||
-      ||
-      ||
-    When I delete the 3rd user
-    Then I should see the following users:
-      ||
-      ||
-      ||
-      ||
+  Scenario: Register as new user
+    Given I am on the homepage
+    When I follow "Sign up!"
+    Then I should be on the new user page
+    When I fill in the following:
+      | Login | lover |
+      | email | lover@lovep.ie |
+      | Password | secret |
+      | Password confirmation | secret |
+
+    And I press "Register"
+    Then I should be on the homepage
+    And I should see "Account registered!"
+    And I should see "Logout"
+    And I should see "lover"
+    
+#  @culerity
+#  Scenario: Delete user
+#    Given the following users:
+#      ||
+#      ||
+#      ||
+#      ||
+#      ||
+#    When I delete the 3rd user
+#    Then I should see the following users:
+#      ||
+#      ||
+#      ||
+#      ||
