@@ -5,18 +5,18 @@ describe "/organisations/index.html.erb" do
 
   before(:each) do
     assigns[:organisations] = [
-      stub_model(Organisation,
-        :name => "value for name",
-        :paypal => "value for paypal",
-        :url => "value for url",
-        :active => false
-      ),
-      stub_model(Organisation,
-        :name => "value for name",
-        :paypal => "value for paypal",
-        :url => "value for url",
-        :active => false
-      )
+            stub_model(Organisation,
+                       :name => "value for name",
+                       :paypal => "value for paypal",
+                       :url => "value for url",
+                       :active => false
+            ),
+            stub_model(Organisation,
+                       :name => "value for name",
+                       :paypal => "value for paypal",
+                       :url => "value for url",
+                       :active => false
+            )
     ]
   end
 

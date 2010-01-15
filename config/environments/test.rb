@@ -33,3 +33,4 @@ config.gem "thoughtbot-shoulda", :lib => false, :source => 'http://gems.github.c
 config.gem 'notahat-machinist', :lib => false
 config.gem "faker", :lib => false
 config.gem "webrat", :lib => false, :version => ">= 0.6.0"
+config.gem "acts-as-taggable-on", :source => "http://gemcutter.org"

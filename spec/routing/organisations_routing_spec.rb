@@ -19,15 +19,15 @@ describe OrganisationsController do
     end
 
     it "recognizes and generates #create" do
-      { :post => "/organisations" }.should route_to(:controller => "organisations", :action => "create") 
+      { :post => "/organisations" }.should route_to(:controller => "organisations", :action => "create")
     end
 
     it "recognizes and generates #update" do
-      { :put => "/organisations/1" }.should route_to(:controller => "organisations", :action => "update", :id => "1") 
+      { :put => "/organisations/1" }.should route_to(:controller => "organisations", :action => "update", :id => "1")
     end
 
     it "recognizes and generates #destroy" do
-      { :delete => "/organisations/1" }.should route_to(:controller => "organisations", :action => "destroy", :id => "1") 
+      { :delete => "/organisations/1" }.should route_to(:controller => "organisations", :action => "destroy", :id => "1")
     end
   end
 end

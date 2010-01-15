@@ -4,10 +4,10 @@ describe "/organisations/show.html.erb" do
   include OrganisationsHelper
   before(:each) do
     assigns[:organisation] = @organisation = stub_model(Organisation,
-      :name => "value for name",
-      :paypal => "value for paypal",
-      :url => "value for url",
-      :active => false
+                                                        :name => "value for name",
+                                                        :paypal => "value for paypal",
+                                                        :url => "value for url",
+                                                        :active => false
     )
   end
 

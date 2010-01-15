@@ -10,11 +10,14 @@ module NavigationHelpers
 
       when /the home\s?page/
         '/'
-    when /the new cause page/
-      new_cause_path
+      when /the new organisation page/
+        new_organisation_path
 
-    when /the new landing page/
-      new_landing_path
+      when /the new cause page/
+        new_cause_path
+
+      when /the new landing page/
+        new_landing_path
 
 
       when /the new user page/
@@ -22,6 +25,9 @@ module NavigationHelpers
 
       when /the new homepage page/
         new_homepage_path
+
+      when /the organisation page/
+        organisations_path
 
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:

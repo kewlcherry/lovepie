@@ -3,8 +3,8 @@ require 'spec_helper'
 describe CauseOrganisation do
   before(:each) do
     @valid_attributes = {
-      :cause_id => 1,
-      :organisation_id => 1
+            :cause_id => 1,
+            :organisation_id => 1
     }
   end
 

@@ -5,11 +5,11 @@ describe "/organisations/new.html.erb" do
 
   before(:each) do
     assigns[:organisation] = stub_model(Organisation,
-      :new_record? => true,
-      :name => "value for name",
-      :paypal => "value for paypal",
-      :url => "value for url",
-      :active => false
+                                        :new_record? => true,
+                                        :name => "value for name",
+                                        :paypal => "value for paypal",
+                                        :url => "value for url",
+                                        :active => false
     )
   end
 
