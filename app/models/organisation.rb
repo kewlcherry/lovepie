@@ -9,4 +9,6 @@ class Organisation < ActiveRecord::Base
   default_scope :conditions => ["active = ?", true]
   named_scope :active, :conditions => ["active = ?", true]
   named_scope :inactive, :conditions => ["active = ?", false]
+
+  has_many :causes
 end

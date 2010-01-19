@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100115001307) do
+ActiveRecord::Schema.define(:version => 20100118185937) do
 
   create_table "cause_organisations", :force => true do |t|
     t.integer  "cause_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100115001307) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "causes_count"
   end
 
   create_table "taggings", :force => true do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20100115001307) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.integer  "causes_count"
   end
 
 end
