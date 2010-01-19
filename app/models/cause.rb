@@ -1,5 +1,7 @@
 class Cause < ActiveRecord::Base
 
+  attr_readonly :popularity_count
+
   MAX_CAUSES_PER_ORGANISATION = 3
 
   belongs_to :organisation, :counter_cache => true
@@ -9,11 +11,9 @@ class Cause < ActiveRecord::Base
 
   validate :validate_max
 
-#  named_scope :by_organisation, lambda { |*args|
-#    {:conditions => ["released_at > ?", (args.first || 2.weeks.ago)]}
-#  }
-#
-#  named_scope :by_most_tagged, lambda do |*args|
+  named_scope :by_popularity, lambda {
+    {:select => "*, count(name) as popularity_count", :group => :name, :order => 'popularity_count DESC'}
+  }
 
   def validate_max
     errors.add_to_base("You cannot have more than #{MAX_CAUSES_PER_ORGANISATION} causes per organisation.") unless Cause.count(:conditions => ["user_id = ? AND organisation_id = ?", user, organisation]) < MAX_CAUSES_PER_ORGANISATION

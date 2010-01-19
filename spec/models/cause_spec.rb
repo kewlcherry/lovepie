@@ -51,12 +51,17 @@ describe Cause do
   end
 
   it "should give the number of (unique) user and organisation's name & id when querying by name" do
-    10.times{Cause.make(:name => "test")}
-    causes_name = Cause.by_organisation.collect {|cause| cause.name}
-    causes_name.should eql causes_name.sort
+#    10.times{Cause.make(:name => "test")}
+#    causes_name = Cause.by_organisation.collect {|cause| cause.name}
+#    causes_name.should eql causes_name.sort
   end
 
-  it "should give the most common organisation tagged with that cause" do
+  it "should give the most common cause" do
+    5.times {Cause.make}
+    3.times {Cause.make(:name => 'test')}
+    2.times {Cause.make(:name => 'another_test')}
+    Cause.by_popularity.first.name.should eql 'test'
+    Cause.by_popularity.first.popularity_count.to_i.should eql 3
   end
 
   it "should order by number of user who tagged an organisation with that cause" do
