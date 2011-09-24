@@ -1,0 +1,48 @@
+	* {
+	  font-family: sans-serif;
+	}
+	
+	body
+	{
+		padding: 0 1em 1em 1em;
+	 	margin-left: auto;
+	    margin-right: auto;
+		text-align:center;
+		background-image:url(bg_tile.png);
+	}
+	
+	div.graph
+	{
+		width: 400px;
+		height: 400px;
+		float: left;
+		border: 0px;
+	}
+	
+	#heart-wrap{
+		display:block;
+		height:300px;
+		width:390px;
+		background:green;	
+	}
+
+	#heart-overlay, #heart-pie {
+		height:360px;
+		width:390px;
+		display:block;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	#heart-overlay {
+		background-image:url(heart.png);
+		background-color:transparent;
+		position:relative;
+		z-index:9999;
+	}
+
+	#heart-pie {
+		position:relative;
+		margin-top:-360px;
+		z-index:1;
+	}
