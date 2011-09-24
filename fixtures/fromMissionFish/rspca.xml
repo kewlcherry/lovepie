@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>RSPCA</nonprofit_name>
+	<statement>The charitable objects of the RSPCA are to promote kindness and to prevent or suppress cruelty to animals and to do all such lawful acts as the Society may consider to be conducive or incidental to the attainment of those objects.</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF10484.jpg</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@rspca.org.uk</receiver_email>
+	<web_url>www.rspca.org.uk</web_url>
+	<token_for_invoice_id>M123456|10484</token_for_invoice_id>
+</nonprofit_data>

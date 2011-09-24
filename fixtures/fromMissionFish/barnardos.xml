@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>Barnardo's</nonprofit_name>
+	<statement>Barnardo's vision is that the lives of all children and young people should be free from poverty, abuse and discrimination. Our purpose is to help the most vulnerable children and young people transform their lives and fulfil their potential. We have over 380 shops across the UK selling donated goods, new goods and even furniture. For details of your local shop visit our website www.barnardos.org.uk           Barnardo's Registered Charity Nos 216250 and SC037605</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF12660.jpg</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@barnardos.org.uk</receiver_email>
+	<web_url>www.barnardos.org.uk</web_url>
+	<token_for_invoice_id>M123456|12660</token_for_invoice_id>
+</nonprofit_data>

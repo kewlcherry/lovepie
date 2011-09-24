@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>Great Ormond Street Hospital Children's Charity</nonprofit_name>
+	<statement>We need to raise &#xA3;50 million every year to help rebuild and refurbish Great Ormond Street Hospital, buy vital equipment and fund pioneering research. Amazing things happen at Great Ormond Street Hospital every day. With your help we can keep the magic alive for our very ill children and their families. For more information please visit www.gosh.org</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF10726.gif</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@gosh.org</receiver_email>
+	<web_url>www.gosh.org</web_url>
+	<token_for_invoice_id>M123456|10726</token_for_invoice_id>
+</nonprofit_data>

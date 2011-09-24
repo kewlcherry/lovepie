@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>Oxfam GB</nonprofit_name>
+	<statement>Oxfam GB is a development, relief, and campaigning organisation working with others to find lasting solutions to poverty and suffering around the world.  Oxfam is currently responding to the food shotages and drought in East Africa. Please visit www.Oxfam.org.uk for more information.</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF10013.jpg</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@oxfam.org.uk</receiver_email>
+	<web_url>www.oxfam.org.uk</web_url>
+	<token_for_invoice_id>M123456|10013</token_for_invoice_id>
+</nonprofit_data>

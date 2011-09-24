@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>Comic Relief - Red Nose Day</nonprofit_name>
+	<statement>Comic Relief spends all the money raised through Red Nose Day to help  vulnerable, poor and disadvantaged people in the UK and Africa turn their lives around. On their behalf, thank you.   Comic Relief, registered charity 326568 (England/Wales); SC039730 (Scotland)</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF18549.jpg</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@comicrelief.com</receiver_email>
+	<web_url>www.rednoseday.com</web_url>
+	<token_for_invoice_id>M123456|18549</token_for_invoice_id>
+</nonprofit_data>

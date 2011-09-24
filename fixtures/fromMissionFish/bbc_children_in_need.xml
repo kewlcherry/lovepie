@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>BBC Children in Need</nonprofit_name>
+	<statement>BBC Children in Need's mission is to positively change the lives of disadvantaged children and young people in the UK.  We provide this support in the form of grants to organisations working with children who have mental, physical or sensory disabilities; behavioural or psychological disorders; are living in poverty or situations of deprivation; or suffering through distress, abuse or neglect.</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF1.gif</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@bbc.co.uk</receiver_email>
+	<web_url>www.bbc.co.uk/pudsey</web_url>
+	<token_for_invoice_id>M123456|1</token_for_invoice_id>
+</nonprofit_data>

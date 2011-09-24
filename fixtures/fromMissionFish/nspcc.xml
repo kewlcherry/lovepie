@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>NSPCC: cruelty to children must stop</nonprofit_name>
+	<statement>Our aim is to create a society where children can grow up in a loving environment, free from sexual, physical, emotional abuse or neglect and to help children who have been abused.  NSPCC, registered charity numbers 216401 and SC037717</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF13424.gif</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@nspcc.org.uk</receiver_email>
+	<web_url>www.nspcc.org.uk</web_url>
+	<token_for_invoice_id>M123456|13424</token_for_invoice_id>
+</nonprofit_data>

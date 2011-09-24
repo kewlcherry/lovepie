@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<nonprofit_data>
+	<nonprofit_name>MACMILLAN CANCER SUPPORT</nonprofit_name>
+	<statement>Macmillan Cancer Support improves the lives of people affected by cancer. We provide practical, medical, emotional and financial support and push for better cancer care. Cancer affects us all. We can all help. We are Macmillan Cancer Support.</statement>
+	<logo_path>http://donationsstatic.ebay.com/extend/logos/MF15796.gif</logo_path>
+	<receiver_email>INVALID-TEST-ACCOUNT@macmillan.org.uk</receiver_email>
+	<web_url>www.macmillan.org.uk</web_url>
+	<token_for_invoice_id>M123456|15796</token_for_invoice_id>
+</nonprofit_data>
