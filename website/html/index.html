@@ -16,9 +16,9 @@
 </head>
 <body>
 <h1>Choose your charities</h1>
-<form action="javascript:blah()">
+<form id="charitylist" action="javascript:submitToServer()">
 	<ul id="charity_list" />
-	<p>Amount: <input type="text" name="user" /></p>
+	<p>Amount: <input id="amount" type="text" name="amount" /></p>
 	<p><input type="submit" value="Submit"></p>
 </form>
 <ul id="results" />
@@ -33,10 +33,22 @@
 	});
   });
 	
-	function blah(){
+	function submitToServer(){
+	  	var params = "";
 		$('input[@type=checkbox]:checked').each(function(key, val){
 			$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
 		});
+		
+	    var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
+	        return $(n).val();
+	    }).get(); //get converts it to an array
+
+	    if(charities.length == 0) { 
+	        charities = "none"; 
+	    }
+		
+    	var url = "http://google.com";
+	    $.post(url, {'charities[]': charities, 'amount': $('#amount').val()}, function(response) {});
 	};
 
 </script>
