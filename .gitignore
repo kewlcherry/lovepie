@@ -8,3 +8,5 @@ doc/app
 .idea
 *.sqlite3
 .idea
+android/bin
+android/gen
