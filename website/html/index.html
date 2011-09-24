@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1138">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Courier New'; background-color: #ffffff}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Courier New'}
+    span.s1 {background-color: transparent}
+  </style>
+</head>
+<body>
+<h1>Choose your charities</h1>
+<form>
+	<ul id="charity_list" />
+	<p>Amount: <input type="text" name="user" /></p>
+	<p><input type="submit" value="Submit"></p>
+</form>
+</body>
+<script>
+  $(document).ready(function(){
+
+	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
+	  $.each(data, function(key, val) {
+		$("#charity_list").prepend('<li id="' + key + '">' + val.nonprofit_name + '<input type="checkbox" name="'+val.nonprofit_name+'" value="'+ val.token_for_invoice_id +'"></li>')
+	  })
+	});
+	
+  });
+</script>
+</html>
+

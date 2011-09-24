@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+  $(document).ready(function(){
+
+
+	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {
+	  var items = [];
+
+	  $.each(data, function(key, val) {
+	    items.push('<li id="' + key + '">' + val.nonprofit_name + '</li>');
+	  });
+
+	  $('<ul/>', {
+	    'class': 'my-new-list',
+	    html: items.join('')
+	  }).appendTo('body');
+	});
+	
+  });
+  </script>
+  
+</head>
+<body>
+</body>
+</html>
