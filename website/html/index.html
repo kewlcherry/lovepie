@@ -16,22 +16,29 @@
 </head>
 <body>
 <h1>Choose your charities</h1>
-<form>
+<form action="javascript:blah()">
 	<ul id="charity_list" />
 	<p>Amount: <input type="text" name="user" /></p>
 	<p><input type="submit" value="Submit"></p>
 </form>
+<ul id="results" />
 </body>
 <script>
   $(document).ready(function(){
 
 	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
 	  $.each(data, function(key, val) {
-		$("#charity_list").prepend('<li id="' + key + '">' + val.nonprofit_name + '<input type="checkbox" name="'+val.nonprofit_name+'" value="'+ val.token_for_invoice_id +'"></li>')
+		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" name="'+val.nonprofit_name+'" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')
 	  })
 	});
-	
   });
+	
+	function blah(){
+		$('input[@type=checkbox]:checked').each(function(key, val){
+			$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
+		});
+	};
+
 </script>
 </html>
 
