@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+	<script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script language="javascript" type="text/javascript" src="lib/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="lib/jquery.flot.pie.js"></script>
+</head>
+<script  type="text/javascript">
+  $(document).ready(function(){
+	
+	var data = [];
+	var series = Math.floor(Math.random()*10)+1;
+	for( var i = 0; i<series; i++)
+	{
+		data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+	}
+
+	$.plot($("#heart-pie"), data, 
+	{
+		series: {
+			pie: { 
+				show: true,
+				radius:300,
+				label: {
+					show: false,
+					formatter: function(label, series){
+						return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+					},
+					threshold: 0.1
+				}
+			}
+		},
+		legend: {
+			show: false
+		}
+	});
+	
+
+});
+</script>
+<style type="text/css">
+	* {
+	  font-family: sans-serif;
+	}
+	
+	body
+	{
+		padding: 0 1em 1em 1em;
+	 	margin-left: auto;
+	    margin-right: auto;
+		text-align:center;
+		background-image:url(bg_tile.png);
+	}
+	
+	div.graph
+	{
+		width: 400px;
+		height: 400px;
+		float: left;
+		border: 0px;
+	}
+	
+	#heart-wrap{
+		display:block;
+		height:300px;
+		width:390px;
+		background:green;	
+	}
+
+	#heart-overlay, #heart-pie {
+		height:360px;
+		width:390px;
+		display:block;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	#heart-overlay {
+		background-image:url(heart.png);
+		background-color:transparent;
+		position:relative;
+		z-index:9999;
+	}
+
+	#heart-pie {
+		position:relative;
+		margin-top:-360px;
+		z-index:1;
+	}
+	
+</style>
+<body>
+	<img src="logo.png" >
+	<div id="heart-wrap">
+		<div id="heart-overlay" class="graph"></div>
+		<div id="heart-pie" class="graph"></div>
+	<div>	
+</body>
+</html>

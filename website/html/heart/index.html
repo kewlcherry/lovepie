@@ -1,0 +1,51 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="reset.css">
+	<style>
+#heart-wrap{
+	display:block;
+	height:419px;
+	width:699px;
+	background:green;	
+}
+
+#heart-overlay, #heart-pie {
+	height:419px;
+	width:699px;
+	display:block;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+#heart-overlay {
+	background-image:url(heart.png);
+	background-color:transparent;
+	position:relative;
+	z-index:9999;
+}
+
+#heart-pie {
+	position:relative;
+	margin-top:-419px;
+	z-index:1;
+}
+
+	</style>
+
+<script>
+$(document).ready(function () {
+
+	
+});
+</script>
+</head>
+<body>
+	<div id="heart-wrap">
+		<ul id="heart-overlay">
+		</ul>
+		<ul id="heart-pie">
+		</ul>	
+	<div>
+</body>
+</html>
