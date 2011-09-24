@@ -1,0 +1,18 @@
+[
+    {
+        "nonprofit_name": "Barnardo's",
+        "statement": "Barnardo's vision is that the lives of all children and young people should be free from poverty, abuse and discrimination. Our purpose is to help the most vulnerable children and young people transform their lives and fulfil their potential. We have over 380 shops across the UK selling donated goods, new goods and even furniture. For details of your local shop visit our website www.barnardos.org.uk           Barnardo's Registered Charity Nos 216250 and SC037605",
+        "logo_path": "http://donationsstatic.ebay.com/extend/logos/MF12660.jpg",
+        "receiver_email": "INVALID-TEST-ACCOUNT@barnardos.org.uk",
+        "web_url": "www.barnardos.org.uk",
+        "token_for_invoice_id": "M123456|12660"
+    },
+    {
+        "nonprofit_name": "BBC Children in Need",
+        "statement": "BBC Children in Need's mission is to positively change the lives of disadvantaged children and young people in the UK.  We provide this support in the form of grants to organisations working with children who have mental, physical or sensory disabilities; behavioural or psychological disorders; are living in poverty or situations of deprivation; or suffering through distress, abuse or neglect.",
+        "logo_path": "http://donationsstatic.ebay.com/extend/logos/MF1.gif",
+        "receiver_email": "INVALID-TEST-ACCOUNT@bbc.co.uk",
+        "web_url": "www.bbc.co.uk/pudsey",
+        "token_for_invoice_id": "M123456|1"
+    }
+]
