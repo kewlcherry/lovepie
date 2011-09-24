@@ -2,4 +2,8 @@
 
 <resources>
     <string name="app_name">Lovepie</string>
+    <string name="donate">I want to donate</string>
+    <string name="to">between</string>
+    <string name="loading">Loading...</string>
+    <string name="loading_fail">Failed to load PayPal</string>
 </resources>
