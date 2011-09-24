@@ -6,4 +6,7 @@
     <string name="to">between</string>
     <string name="loading">Loading...</string>
     <string name="loading_fail">Failed to load PayPal</string>
+    <string name="success">Donation complete! :)</string>
+    <string name="failure">Donation failed! :(</string>
+    <string name="empty_amount">Enter an amount first!</string>
 </resources>

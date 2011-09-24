@@ -1,12 +1,17 @@
 package com.novoda.lovepie;
 
+import java.math.BigDecimal;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import roboguice.inject.InjectResource;
 
 import com.paypal.android.MEP.CheckoutButton;
 import com.paypal.android.MEP.PayPal;
+import com.paypal.android.MEP.PayPalPayment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LovepieActivity extends RoboActivity implements OnClickListener {
 	@InjectView(R.id.amount_field) EditText amount;
@@ -73,7 +79,37 @@ public class LovepieActivity extends RoboActivity implements OnClickListener {
     
 	@Override
     public void onClick(View view) {
-    	
+		if (amount.getText().toString().equals("")) {
+			Toast.makeText(this, R.string.empty_amount, Toast.LENGTH_SHORT).show();
+		} else {
+			String entered = (String) amount.getText().toString();
+	    	Double amount = Double.parseDouble(entered);
+	    	BigDecimal finalAmount = BigDecimal.valueOf(amount);
+	    	pay(finalAmount);
+		}
     }
+	
+	private void pay(BigDecimal amount) {
+		PayPalPayment donation = new PayPalPayment();
+    	donation.setCurrencyType("GBP");
+    	donation.setPaymentType(PayPal.PAY_TYPE_PARALLEL);
+    	donation.setPaymentSubtype(PayPal.PAYMENT_SUBTYPE_DONATIONS);
+    	donation.setSubtotal(amount);
+    	donation.setRecipient("carl@novoda.com");
+    	Intent checkoutIntent = PayPal.getInstance().checkout(donation, this);
+    	startActivityForResult(checkoutIntent, REQUEST_CODE);
+	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (requestCode == REQUEST_CODE) {
+			switch (resultCode) {
+			case Activity.RESULT_OK:
+				Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
+				break;
+			case Activity.RESULT_CANCELED:
+				Toast.makeText(this, R.string.failure, Toast.LENGTH_LONG).show();
+			}
+		}
+	}
     
 }
