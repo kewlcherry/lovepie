@@ -30,7 +30,7 @@ public class LovepieApplication extends RoboApplication {
 		
 		@Override
 		public void run() {
-			payPal = PayPal.initWithAppID(getApplicationContext(), APP_ID, PayPal.ENV_NONE);
+			payPal = PayPal.initWithAppID(getApplicationContext(), APP_ID, PayPal.ENV_SANDBOX);
 			payPal.setShippingEnabled(false);
 		}
 	}

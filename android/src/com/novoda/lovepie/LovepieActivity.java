@@ -18,7 +18,8 @@ import roboguice.util.RoboAsyncTask;
 import com.google.gson.Gson;
 import com.paypal.android.MEP.CheckoutButton;
 import com.paypal.android.MEP.PayPal;
-import com.paypal.android.MEP.PayPalPayment;
+import com.paypal.android.MEP.PayPalAdvancedPayment;
+import com.paypal.android.MEP.PayPalReceiverDetails;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -110,9 +111,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 			Toast.makeText(this, R.string.min_charities, Toast.LENGTH_SHORT).show();
 		} else {
 			String entered = (String) amount.getText().toString();
-	    	Double amount = Double.parseDouble(entered);
-	    	BigDecimal finalAmount = BigDecimal.valueOf(amount);
-	    	pay(finalAmount);
+	    	pay(entered);
 		}
 		onPayPalLoaded();
     }
@@ -127,15 +126,38 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 		return count;
 	}
 
-	private void pay(BigDecimal amount) {
-		PayPalPayment donation = new PayPalPayment();
+	private void pay(String entered) {
+    	Double amountEach = Double.parseDouble("" + entered) / Double.parseDouble("" + getNumSelected());
+    	BigDecimal bigNum = BigDecimal.valueOf(amountEach);
+    	
+    	ArrayList<PayPalReceiverDetails> recievers = new ArrayList<PayPalReceiverDetails>();
+    	for (int i = 0; i < charityList.size(); i++) {
+    		if (selectedPositions.get(i)) {
+    			String invoiceId = generateInvoiceString(i);    			
+    			PayPalReceiverDetails receiver = new PayPalReceiverDetails();
+    			//receiver.setRecipient("seller_1316894385_biz@novoda.com");
+    			receiver.setRecipient(charityList.get(i).getReceiver_email());
+    			receiver.setSubtotal(bigNum);
+    			receiver.setPaymentType(PayPal.PAY_TYPE_PARALLEL);
+    			receiver.setPaymentSubtype(PayPal.PAYMENT_SUBTYPE_DONATIONS);
+    			receiver.setDescription(invoiceId);
+    			recievers.add(receiver);
+    		}
+    	}
+    	
+    	PayPalAdvancedPayment donation = new PayPalAdvancedPayment();
     	donation.setCurrencyType("GBP");
-    	donation.setPaymentType(PayPal.PAY_TYPE_PARALLEL);
-    	donation.setPaymentSubtype(PayPal.PAYMENT_SUBTYPE_DONATIONS);
-    	donation.setSubtotal(amount);
-    	donation.setRecipient("carl@novoda.com");
+    	donation.setReceivers(recievers);
     	Intent checkoutIntent = PayPal.getInstance().checkout(donation, this);
     	startActivityForResult(checkoutIntent, REQUEST_CODE);
+	}
+
+	private String generateInvoiceString(int pos) {
+		Charity charity = charityList.get(pos);
+		String id = charity.getToken_for_invoice_id();
+		String name = charity.getNonprofit_name();
+		String invoiceId = id + " Donation via Missionfish for " + name;
+		return invoiceId;
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -210,7 +232,6 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 			selectedPositions.set(position, true);
 			view.setBackgroundColor(selectedId);
 		}
-		
 	}
 
 	@Override
