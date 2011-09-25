@@ -35,7 +35,7 @@
 
 	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
 	  $.each(data, function(key, val) {
-		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" class="check" name="charity" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')		
+		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" class="check" name="' + val.nonprofit_name+'" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')		
 	  })
 	});
 	
