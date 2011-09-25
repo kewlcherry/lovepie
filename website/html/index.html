@@ -3,42 +3,43 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1138">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Courier New'; background-color: #ffffff}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Courier New'}
-    span.s1 {background-color: transparent}
-  </style>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<h1>Choose your charities</h1>
-<form action="javascript:blah()">
-	<ul id="charity_list" />
-	<p>Amount: <input type="text" name="user" /></p>
-	<p><input type="submit" value="Submit"></p>
-</form>
-<ul id="results" />
+	<img src="logo.png" >
+	<div id="wrap">
+		<div id="form-wrap">
+			<h1>Choose your charities</h1>
+			<form id="charitylist" action="javascript:submitToServer()">
+				<ul id="charity_list" />
+				<div id="amount-wrap">
+					<span id="amount-currency">£<span>
+					<input id="amount" type="text" name="amount" value="?" class="amount" onfocus="prefillClear(this);" onblur="prefillClear(this);"></input>
+					<input id="amount-submit" type="submit" value="Give!">
+				</div>
+			</form>
+			<ul id="results" />
+		</div>
+		<div id="heart-wrap">
+			<div id="heart-overlay" class="graph"></div>
+			<div id="heart-pie" class="graph"></div>
+		<div>
+	</div>
 </body>
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="pie.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="lib/jquery.flot.pie.js"></script>
 <script>
   $(document).ready(function(){
-
+	initPie();
 	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
 	  $.each(data, function(key, val) {
 		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" name="'+val.nonprofit_name+'" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')
 	  })
 	});
   });
-	
-	function blah(){
-		$('input[@type=checkbox]:checked').each(function(key, val){
-			$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
-		});
-	};
-
 </script>
 </html>
 

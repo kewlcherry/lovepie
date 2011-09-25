@@ -10,3 +10,8 @@ doc/app
 .idea
 android/bin
 android/gen
+project/boot
+target
+.idea
+.idea_modules
+.history
