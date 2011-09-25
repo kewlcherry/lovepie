@@ -3,12 +3,20 @@ function prefillClear(field) {
 	else if (field.value == '') {field.value = field.defaultValue;}
 }
 
-function initPie(){
+function initPie(charities, total){
+	
 	var data = [];
-	var series = Math.floor(Math.random()*10)+1;
-	for( var i = 0; i<series; i++)
-	{
-		data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+	var series = charities;
+	for( var i = 0; i<series; i++)	{
+		
+		var lbl;
+		if (isNaN((parseInt(total,0)/series))){
+			lbl=0;
+		}else{
+			lbl=(parseInt(total,0)/series);
+		}
+		
+		data[i] = { label: "£"+ lbl, data: charities }
 	}
 
 	$.plot($("#heart-pie"), data, 
@@ -18,9 +26,9 @@ function initPie(){
 				show: true,
 				radius:300,
 				label: {
-					show: false,
+					show: true,
 					formatter: function(label, series){
-						return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+						return '<div style=";bottom: 0px;left: 0px;font-size:8pt;padding:0;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
 					},
 					threshold: 0.1
 				}
@@ -33,11 +41,7 @@ function initPie(){
 }	
 
 function submitToServer(){
-  	var params = "";
-	$('input[@type=checkbox]:checked').each(function(key, val){
-		$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
-	});
-	
+  	var params = "";	
     var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
         return $(n).val();
     }).get(); //get converts it to an array
@@ -53,3 +57,5 @@ function submitToServer(){
 	var url = "http://google.com";
     $.post(url, {'charities[]': charities, 'increment': increment}, function(response) {});
 };
+
+

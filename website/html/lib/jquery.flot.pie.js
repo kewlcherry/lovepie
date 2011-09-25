@@ -1,3 +1,6 @@
+//***CUSTOM in order to show how much you are dividing in the pie I reduce the hieght
+
+
 /*
 Flot plugin for rendering pie charts. The plugin assumes the data is 
 coming is as a single data value for each series, and each of those 
@@ -453,8 +456,9 @@ More detail and specific examples can be found in the included HTML file.
 							text = plf(text, slice);
 							
 						var halfAngle = ((startAngle+slice.angle) + startAngle)/2;
-						var x = centerLeft + Math.round(Math.cos(halfAngle) * radius);
-						var y = centerTop + Math.round(Math.sin(halfAngle) * radius) * options.series.pie.tilt;
+//***CUSTOM in order to show how much you are dividing in the pie I reduce the hieght 
+						var x = centerLeft + (Math.round(Math.cos(halfAngle) * radius))*0.5;
+						var y = centerTop + (Math.round(Math.sin(halfAngle) * radius))*0.5 * options.series.pie.tilt;
 						
 						var html = '<span class="pieLabel" id="pieLabel'+index+'" style="position:absolute;top:' + y + 'px;left:' + x + 'px;">' + text + "</span>";
 						target.append(html);
