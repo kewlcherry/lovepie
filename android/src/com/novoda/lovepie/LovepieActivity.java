@@ -6,6 +6,7 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -16,6 +17,7 @@ import roboguice.inject.InjectResource;
 import roboguice.util.RoboAsyncTask;
 
 import com.google.gson.Gson;
+import com.google.inject.Inject;
 import com.paypal.android.MEP.CheckoutButton;
 import com.paypal.android.MEP.PayPal;
 import com.paypal.android.MEP.PayPalAdvancedPayment;
@@ -23,9 +25,14 @@ import com.paypal.android.MEP.PayPalReceiverDetails;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -48,6 +55,8 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	@InjectResource(R.string.loading_fail) String loadingFail;
 	@InjectResource(R.color.selected) Integer selectedId;
 	@InjectResource(R.color.white) Integer unselectedId;
+	@Inject SensorManager sensorManager;
+	@Inject Vibrator vibrator;
 	
 	private static final int REQUEST_CODE = 1;
 	private static final int MAX_TRIES = 30;
@@ -57,8 +66,49 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	private Handler handler = new Handler();
 	private int tries = 0;
 	
+	private float accel; 
+	private float accelCurrent; 
+	private float accelLast;
+	 
+	private final SensorEventListener mSensorListener = new SensorEventListener() {
+
+		public void onSensorChanged(SensorEvent se) {
+			float x = se.values[0];
+			float y = se.values[1];
+			float z = se.values[2];
+			accelLast = accelCurrent;
+			accelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+			float delta = accelCurrent - accelLast;
+			accel = accel * 0.9f + delta;
+			
+			if (accel > 5) {
+				randomList();
+			}
+		}
+
+		public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		}
+	};
+	
 	private List<Charity> charityList;
 	private ArrayList<Boolean> selectedPositions = new ArrayList<Boolean>();
+	
+	private void randomList() {
+		
+		vibrator.vibrate(1000);
+		randomise();
+		while (getNumSelected() > 6 || getNumSelected() == 0) {
+			randomise();
+		}
+	}
+
+	private void randomise() {
+		for (int i = 0; i < selectedPositions.size(); i++) {
+			boolean rand = new Random().nextBoolean();
+			selectedPositions.set(i, rand);
+			list.setAdapter(new CharityAdapter(LovepieActivity.this, charityList, selectedPositions));
+		}
+	}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +116,24 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
         setContentView(R.layout.lovepie);
         handler.post(loadingChecker);
         new GetCharitiesTask().execute();
+        
+       
+        sensorManager.registerListener(mSensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        accel = 0.00f;
+        accelCurrent = SensorManager.GRAVITY_EARTH;
+        accelLast = SensorManager.GRAVITY_EARTH;
+    }
+    
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	sensorManager.registerListener(mSensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+    
+    @Override
+    public void onPause() {
+    	sensorManager.unregisterListener(mSensorListener);
+        super.onStop();
     }
     
 	private Runnable loadingChecker = new Runnable() {
