@@ -24,6 +24,27 @@ function initPie(){
 		legend: {
 			show: false
 		}
+	});	
+}	
+
+function submitToServer(){
+  	var params = "";
+	$('input[@type=checkbox]:checked').each(function(key, val){
+		$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
 	});
 	
-}	
+    var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
+        return $(n).val();
+    }).get(); //get converts it to an array
+
+    if(charities.length == 0) { 
+        charities = "none"; 
+    }
+	
+	var total = $('#amount').val();
+	var increment = total/charities.length;
+	
+	
+	var url = "http://google.com";
+    $.post(url, {'charities[]': charities, 'increment': increment}, function(response) {});
+};
