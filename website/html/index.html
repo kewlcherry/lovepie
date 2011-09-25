@@ -7,10 +7,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<img src="logo.png" >
+	<img id="logo" src="logo.png" >
 	<div id="wrap">
 		<div id="form-wrap">
-			<h1>Choose your charities</h1>
 			<form id="charitylist" action="javascript:submitToServer()">
 				<ul id="charity_list" />
 				<div id="amount-wrap">
@@ -27,19 +26,52 @@
 		<div>
 	</div>
 </body>
- <script src="http://code.jquery.com/jquery-latest.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="pie.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.pie.js"></script>
 <script>
   $(document).ready(function(){
-	initPie();
+
 	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
 	  $.each(data, function(key, val) {
-		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" name="'+val.nonprofit_name+'" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')
+		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" class="check" name="charity" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')		
 	  })
 	});
+	
+	
+	$(function(){
+	      $('.check').live('click', function(){            
+			var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
+		        return $(n).val();
+		    }).get(); //get converts it to an array
+
+		    if(charities.length == 0) { 
+		        charities = 0; 
+		    }
+		
+			initPie(charities.length);			
+	      });
+
+	      $('.check').live('change', function(){
+			var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
+		        return $(n).val();
+		    }).get(); //get converts it to an array
+
+		    if(charities.length == 0) { 
+		        charities = 0; 
+		    }
+
+			initPie(charities.length);
+	      });
+	 });
+
+
+
+	initPie(0);	
+
   });
 </script>
+
 </html>
 

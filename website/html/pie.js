@@ -3,12 +3,11 @@ function prefillClear(field) {
 	else if (field.value == '') {field.value = field.defaultValue;}
 }
 
-function initPie(){
+function initPie(charities){
 	var data = [];
-	var series = Math.floor(Math.random()*10)+1;
-	for( var i = 0; i<series; i++)
-	{
-		data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+	var series = charities;
+	for( var i = 0; i<series; i++)	{
+		data[i] = { label: "Series"+(i+1), data: charities }
 	}
 
 	$.plot($("#heart-pie"), data, 
@@ -53,3 +52,5 @@ function submitToServer(){
 	var url = "http://google.com";
     $.post(url, {'charities[]': charities, 'increment': increment}, function(response) {});
 };
+
+
