@@ -17,7 +17,10 @@ object LovePieBuild extends Build {
     settings = General.settings ++ sbtappengine.AppenginePlugin.webSettings ++ Seq(
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % "2.0.1",
-        "net.databinder" %% "dispatch-http" % "0.8.5",
+//        "org.scalatra" %% "scalatra-scalate" % "2.0.0",
+//        "org.fusesource.scalate" % "scalate-core" % "1.5.2",
+        "net.databinder" %% "dispatch-http-gae" % "0.8.3",
+        "net.databinder" %% "dispatch-lift-json" % "0.8.5",
 
         "org.scalatra" %% "scalatra-specs" % "2.0.1" % "test",
         "org.mortbay.jetty" % "jetty" % "6.1.22" % "jetty",

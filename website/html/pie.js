@@ -42,6 +42,18 @@ function initPie(charities, total){
 }	
 
 function submitToServer(){
+$.blockUI({
+    message:  '<h1>Doing some awesome Paypal API stuff...</h1><b>You ll be redirected to paypal as soon as this finishes</b>',
+    css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        }
+    });
   	var params = "";	
     var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
         return $(n).val();
@@ -55,8 +67,12 @@ function submitToServer(){
 	var increment = total/charities.length;
 	
 	
-	var url = "http://google.com";
-    $.post(url, {'charities[]': charities, 'increment': increment}, function(response) {});
+	var url = "/donate";
+    $.post(url, $("#charitylist").serialize(), function(response) {
+    $.unblockUI;
+     console.log("redirecting: " +response) ;
+     window.location.replace("https://sandbox.paypal.com/webscr?cmd=_ap-payment&paykey=" + response);
+     });
 };
 
 

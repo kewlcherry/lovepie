@@ -2,10 +2,10 @@ package lovep.ie
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import org.scalatra.ScalatraServlet
+import paypal.api.ParallelPayment
 
-class Landing extends HttpServlet {
-
-  def json = """
+class LovePieServlet extends ScalatraServlet {
+  val json = """
   [
     {
         "nonprofit_name": "Barnardo's",
@@ -22,14 +22,6 @@ class Landing extends HttpServlet {
         "receiver_email": "INVALID-TEST-ACCOUNT@bbc.co.uk",
         "web_url": "www.bbc.co.uk/pudsey",
         "token_for_invoice_id": "M123456|1"
-    },
-    {
-        "nonprofit_name": "Cancer Research UK",
-        "statement": "Cancer Research UK is the world's leading charity dedicated to research on the causes, treatment and prevention of cancer. Thanks to research, more people are surviving cancer than ever before.",
-        "logo_path": "http://donationsstatic.ebay.com/extend/logos/MF10650.jpg",
-        "receiver_email": "INVALID-TEST-ACCOUNT@cancer.org.uk",
-        "web_url": "www.cancerresearchuk.org",
-        "token_for_invoice_id": "M123456|10650"
     },
     {
         "nonprofit_name": "Comic Relief - Red Nose Day",
@@ -90,14 +82,33 @@ class Landing extends HttpServlet {
 ]
   """
 
-  override def doGet(req:HttpServletRequest, resp: HttpServletResponse) {
-    resp.setContentType("application/json");
-    resp.getWriter().println(json);
-  }
-}
-
-class CharityServlet extends ScalatraServlet {
   get("/") {
-    <h1>Hello, world!</h1>
+    redirect("http://love-pie.appspot.com/static/index.html")
+  }
+
+  get("/success") {
+    redirect("http://love-pie.appspot.com/static/success.html")
+  }
+
+  get("/cancel") {
+    redirect("http://love-pie.appspot.com/static/cancel.html")
+  }
+
+  get("/charity") {
+    json
+  }
+
+  post("/donate") {
+    //_ gives 100 to xxx as broker carl@novoda.com
+    val amount = params.get("amount").get.toInt
+    val np = params - "amount"
+    val size = params.size - 1
+    import lovep.ie.paypal.api.Receiver
+    val receivers = np.collect {
+      //case ("amount", am: String) => amount = am.toInt
+      case (name: String, invoiceId: String) => new Receiver(amount / size, "test_%s@novoda.com".format(scala.util.Random.nextInt(1024)), "MissionFish donation %s on behalf of %s" format(invoiceId, name))
+      //case _ => None
+    }
+    new ParallelPayment(scala.Math.round(amount / size), receivers.toList).execute.getOrElse("error")
   }
 }
