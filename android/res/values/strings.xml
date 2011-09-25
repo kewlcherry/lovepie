@@ -10,4 +10,6 @@
     <string name="failure">Donation failed! :(</string>
     <string name="empty_amount">Enter an amount first!</string>
     <string name="max_charities">Please select maximum of 6 charities</string>
+    <string name="min_charities">Please select at least one charity</string>
+    <string name="connection_fail">Could not connect to server</string>
 </resources>
