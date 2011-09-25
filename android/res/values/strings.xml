@@ -9,4 +9,5 @@
     <string name="success">Donation complete! :)</string>
     <string name="failure">Donation failed! :(</string>
     <string name="empty_amount">Enter an amount first!</string>
+    <string name="max_charities">Please select maximum of 6 charities</string>
 </resources>

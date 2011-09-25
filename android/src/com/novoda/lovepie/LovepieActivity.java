@@ -103,6 +103,8 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
     public void onClick(View view) {
 		if (amount.getText().toString().equals("")) {
 			Toast.makeText(this, R.string.empty_amount, Toast.LENGTH_SHORT).show();
+		} else if (getNumSelected() > 6) {
+			Toast.makeText(this, R.string.max_charities, Toast.LENGTH_SHORT).show();
 		} else {
 			String entered = (String) amount.getText().toString();
 	    	Double amount = Double.parseDouble(entered);
@@ -112,6 +114,16 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 		onPayPalLoaded();
     }
 	
+	private int getNumSelected() {
+		int count = 0;
+		for (boolean isSelected : selectedPositions) {
+			if(isSelected) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	private void pay(BigDecimal amount) {
 		PayPalPayment donation = new PayPalPayment();
     	donation.setCurrencyType("GBP");
@@ -200,7 +212,13 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position,long id) {
-		// TODO Auto-generated method stub
+		Charity charity = charityList.get(position);
+		Intent intent = new Intent(this, CharityActivity.class);
+		intent.putExtra(CharityActivity.NAME, charity.getNonprofit_name());
+		intent.putExtra(CharityActivity.STATEMENT, charity.getStatement());
+		intent.putExtra(CharityActivity.IMAGE_URL, charity.getLogo_path());
+		intent.putExtra(CharityActivity.URL, charity.getWeb_url());
+		startActivity(intent);
 		return false;
 	}
 	
