@@ -7,9 +7,19 @@
 	<ImageView android:id="@+id/list_image"
 		style="@style/list_image" />
 		
+	<ImageView android:id="@+id/tick"
+		style="@style/Wrap"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true"
+		android:layout_width="26dp"
+		android:layout_height="26dp"
+		android:padding="4dp"
+		android:src="@drawable/ic_tick" />
+		
 	<TextView android:id="@+id/list_title" 
 		style="@style/list_title" 
-		android:layout_toRightOf="@id/list_image" />
+		android:layout_toRightOf="@id/list_image" 
+		android:layout_toLeftOf="@id/tick" />
 		
 	<TextView android:id="@+id/list_body"
 		style="@style/list_body" 

@@ -12,4 +12,5 @@
     <string name="max_charities">Please select maximum of 6 charities</string>
     <string name="min_charities">Please select at least one charity</string>
     <string name="connection_fail">Could not connect to server</string>
+    <string name="menu_website">Charity website</string>
 </resources>
