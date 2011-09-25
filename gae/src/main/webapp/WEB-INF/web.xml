@@ -1,0 +1,27 @@
+<!-- Generated from app.yaml. Do not edit. -->
+<web-app version='2.5' xmlns='http://java.sun.com/xml/ns/javaee'>
+  <servlet>
+    <servlet-name>lovep.ie.Landing</servlet-name>
+    <servlet-class>lovep.ie.Landing</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>lovep.ie.Landing</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>lovep.ie.CharityServlet</servlet-name>
+    <servlet-class>lovep.ie.CharityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>lovep.ie.CharityServlet</servlet-name>
+    <url-pattern>/charity/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>lovep.ie.servlet.Donate</servlet-name>
+    <servlet-class>lovep.ie.servlet.Donate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>lovep.ie.servlet.Donate</servlet-name>
+    <url-pattern>/donate/*</url-pattern>
+  </servlet-mapping>
+</web-app>

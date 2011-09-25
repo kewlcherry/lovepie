@@ -8,3 +8,6 @@ handlers:
 
 - url: /charity/*
   servlet: lovep.ie.CharityServlet
+
+- url: /donate/*
+  servlet: lovep.ie.servlet.Donate
