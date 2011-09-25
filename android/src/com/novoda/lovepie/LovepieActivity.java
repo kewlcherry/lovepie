@@ -82,7 +82,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 			float delta = accelCurrent - accelLast;
 			accel = accel * 0.9f + delta;
 			
-			if (accel > 5) {
+			if (accel > 7) {
 				randomList();
 			}
 		}
