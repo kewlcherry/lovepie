@@ -101,10 +101,13 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
     
 	@Override
     public void onClick(View view) {
+		int selected = getNumSelected();
 		if (amount.getText().toString().equals("")) {
 			Toast.makeText(this, R.string.empty_amount, Toast.LENGTH_SHORT).show();
-		} else if (getNumSelected() > 6) {
+		} else if (selected > 6) {
 			Toast.makeText(this, R.string.max_charities, Toast.LENGTH_SHORT).show();
+		} else if (selected == 0) {
+			Toast.makeText(this, R.string.min_charities, Toast.LENGTH_SHORT).show();
 		} else {
 			String entered = (String) amount.getText().toString();
 	    	Double amount = Double.parseDouble(entered);
@@ -178,7 +181,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	    
 	    @Override 
 	    protected void onException(Exception e) { 
-	        // Do something
+	        Toast.makeText(LovepieActivity.this, R.string.connection_fail, Toast.LENGTH_LONG).show();
 	    } 
 	    
 	    @Override
