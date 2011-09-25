@@ -25,6 +25,12 @@
 			<div id="heart-pie" class="graph"></div>
 		<div>
 	</div>
+	<div id="social-wrap">
+		<a href="#" title="Download on the Android Market"><img src="social/market.png" alt="market"></a>
+		<a href="#" title="Share on Facebook"><img src="social/facebook.png" alt="facebook"></a>
+		<a href="#" title="Share on Tumblr"><img src="social/tumblr.png" alt="tumblr"></a>
+		<a href="#" title="Share on Twitter"><img src="social/twitter.png" alt="twitter"></a>
+	</div>
 </body>
  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="pie.js"></script>
@@ -51,7 +57,7 @@
 		        charities = 0; 
 		    }
 		
-			initPie(charities.length);			
+			initPie(charities.length, $('#amount').val());			
 	      });
 
 	      $('.check').live('change', function(){
@@ -63,13 +69,13 @@
 		        charities = 0; 
 		    }
 
-			initPie(charities.length);
+			initPie(charities.length, $('#amount').val());
 	      });
 	 });
 
 
 
-	initPie(0);	
+	initPie(0, $('#amount').val());	
 
   });
 </script>

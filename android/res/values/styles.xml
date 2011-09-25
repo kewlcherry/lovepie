@@ -29,19 +29,27 @@
     	<item name="android:orientation">vertical</item>
     </style>
     
+    <style name="Activity" parent="Fill.Vertical">
+    	<item name="android:background">@drawable/background_noise</item>
+    </style>
+    
     <style name="logo" parent="Wrap">
-    	<item name="android:layout_height">100dp</item>
-    	<item name="android:layout_marginTop">10dp</item>
-    	<item name="android:layout_marginLeft">@dimen/gutter</item>
+    	<item name="android:layout_height">65dp</item>
+    	<item name="android:layout_marginTop">@dimen/gutter</item>
     	<item name="android:layout_marginRight">@dimen/gutter</item>
+    	<item name="android:layout_marginLeft">@dimen/gutter</item>
     	<item name="android:src">@drawable/logo_transparent</item>
     	<item name="android:scaleType">centerInside</item>
     	<item name="android:focusable">true</item>
     	<item name="android:focusableInTouchMode">true</item>
     </style>
     
+    <style name="mini_logo" parent="logo">
+    	<item name="android:layout_height">40dp</item>
+    </style>
+    
     <style name="text" parent="WrapHeight">
-    	<item name="android:textSize">20sp</item>
+    	<item name="android:textSize">18sp</item>
     	<item name="android:textStyle">bold</item>
     	<item name="android:textColor">@color/black</item>
     	<item name="android:shadowColor">@color/white</item>
@@ -54,6 +62,11 @@
     	<item name="android:layout_marginLeft">@dimen/gutter</item>
     </style>
     
+    <style name="aux_text" parent="text">
+    	<item name="android:textSize">18sp</item>
+    	<item name="android:textStyle">normal</item>
+    </style>
+    
     <style name="currency_text" parent="text">
     	<item name="android:layout_width">wrap_content</item>
     	<item name="android:textSize">32sp</item>
@@ -61,11 +74,12 @@
     </style>
     
     <style name="amount_field" parent="Wrap">
-		<item name="android:layout_width">125dp</item>
+		<item name="android:layout_width">113dp</item>
 		<item name="android:layout_marginLeft">15dp</item>
 		<item name="android:inputType">number</item>
 		<item name="android:imeOptions">actionDone</item>
 		<item name="android:singleLine">true</item>
+		<item name="android:gravity">center</item>
     </style>
     
     <style name="charity_list" parent="Fill">
@@ -99,7 +113,7 @@
     	<item name="android:layout_alignParentTop">true</item>
     	<item name="android:layout_alignParentLeft">true</item>
     	<item name="android:background">@color/white</item>
-    	<item name="android:padding">5dp</item>
+    	<item name="android:padding">@dimen/img_pad</item>
     </style>
     
     <style name="list_title" parent="WrapHeight">

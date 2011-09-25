@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/Activity"
+	android:paddingTop="@dimen/gutter"
+	android:paddingBottom="@dimen/gutter">
+			
+	<TextView android:id="@+id/charity_name" 
+		style="@style/main_text"
+		android:layout_marginRight="@dimen/gutter"
+		android:layout_marginLeft="@dimen/gutter"
+		android:layout_marginBottom="@dimen/half_gutter" />
+		
+	<ImageView android:id="@+id/lovepie_logo"
+		style="@style/mini_logo"
+		android:layout_alignParentBottom="true" />
+		
+	<ScrollView 
+		style="@style/Fill"
+		android:layout_below="@id/charity_name"
+		android:layout_above="@id/lovepie_logo">
+	<RelativeLayout
+		style="@style/Fill"
+		android:paddingLeft="@dimen/gutter"
+		android:paddingRight="@dimen/gutter">
+		
+		<ImageView android:id="@+id/charity_logo" 
+			style="@style/Wrap" 
+			android:layout_height="70dp"
+			android:layout_marginBottom="@dimen/half_gutter"
+			android:background="@color/white"
+			android:padding="@dimen/img_pad" />
+				
+		<TextView android:id="@+id/charity_statement" 
+			style="@style/aux_text" 
+			android:layout_below="@id/charity_logo" />
+	
+	</RelativeLayout>
+	</ScrollView>	
+	
+</RelativeLayout>

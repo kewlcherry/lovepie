@@ -2,6 +2,8 @@
 
 <resources>
     <dimen name="gutter">20dp</dimen>
+    <dimen name="half_gutter">10dp</dimen>
     <dimen name="bar_height">2dp</dimen>
     <dimen name="li_height">70dp</dimen>
+    <dimen name="img_pad">5dp</dimen>
 </resources>
