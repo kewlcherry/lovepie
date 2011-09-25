@@ -10,10 +10,11 @@ function initPie(charities, total){
 	for( var i = 0; i<series; i++)	{
 		
 		var lbl;
-		if (isNaN((parseInt(total,0)/series))){
+				
+		if (isNaN((parseFloat(total,0)/series))){
 			lbl=0;
 		}else{
-			lbl=(parseInt(total,0)/series);
+			lbl=(parseFloat(total,0)/series).toFixed(2);;
 		}
 		
 		data[i] = { label: "£"+ lbl, data: charities }
