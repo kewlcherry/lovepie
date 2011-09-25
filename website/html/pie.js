@@ -32,11 +32,7 @@ function initPie(charities){
 }	
 
 function submitToServer(){
-  	var params = "";
-	$('input[@type=checkbox]:checked').each(function(key, val){
-		$("#results").append('<li>['+key+'] Name=['+val.name+', ID='+val.value+']</li>');
-	});
-	
+  	var params = "";	
     var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
         return $(n).val();
     }).get(); //get converts it to an array
