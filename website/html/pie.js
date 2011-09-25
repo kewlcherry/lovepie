@@ -1,3 +1,8 @@
+function prefillClear(field) {
+	if (field.defaultValue==field.value) {field.value = '';}
+	else if (field.value == '') {field.value = field.defaultValue;}
+}
+
 function initPie(){
 	var data = [];
 	var series = Math.floor(Math.random()*10)+1;

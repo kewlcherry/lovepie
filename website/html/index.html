@@ -4,21 +4,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="Content-Style-Type" content="text/css">
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<img src="logo.png" >
-	<h1>Choose your charities</h1>
-	<form id="charitylist" action="javascript:submitToServer()">
-		<ul id="charity_list" />
-		<p>Amount: <input id="amount" type="text" name="amount" /></p>
-		<p><input type="submit" value="Submit"></p>
-	</form>
-	<ul id="results" />
-
-	<div id="heart-wrap">
-		<div id="heart-overlay" class="graph"></div>
-		<div id="heart-pie" class="graph"></div>
-	<div>	
+	<div id="wrap">
+		<div id="form-wrap">
+			<h1>Choose your charities</h1>
+			<form id="charitylist" action="javascript:submitToServer()">
+				<ul id="charity_list" />
+				<div id="amount-wrap">
+					<span id="amount-currency">£<span>
+					<input id="amount" type="text" name="amount" value="?" class="amount" onfocus="prefillClear(this);" onblur="prefillClear(this);"></input>
+					<input id="amount-submit" type="submit" value="Give!">
+				</div>
+			</form>
+			<ul id="results" />
+		</div>
+		<div id="heart-wrap">
+			<div id="heart-overlay" class="graph"></div>
+			<div id="heart-pie" class="graph"></div>
+		<div>
+	</div>
 </body>
  <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="pie.js"></script>
