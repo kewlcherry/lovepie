@@ -3,11 +3,20 @@ function prefillClear(field) {
 	else if (field.value == '') {field.value = field.defaultValue;}
 }
 
-function initPie(charities){
+function initPie(charities, total){
+	
 	var data = [];
 	var series = charities;
 	for( var i = 0; i<series; i++)	{
-		data[i] = { label: "Series"+(i+1), data: charities }
+		
+		var lbl;
+		if (isNaN((parseInt(total,0)/series))){
+			lbl=0;
+		}else{
+			lbl=(parseInt(total,0)/series);
+		}
+		
+		data[i] = { label: "£"+ lbl, data: charities }
 	}
 
 	$.plot($("#heart-pie"), data, 
@@ -17,9 +26,9 @@ function initPie(charities){
 				show: true,
 				radius:300,
 				label: {
-					show: false,
+					show: true,
 					formatter: function(label, series){
-						return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+						return '<div style=";bottom: 0px;left: 0px;font-size:8pt;padding:0;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
 					},
 					threshold: 0.1
 				}

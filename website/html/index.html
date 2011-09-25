@@ -50,7 +50,7 @@
 		        charities = 0; 
 		    }
 		
-			initPie(charities.length);			
+			initPie(charities.length, $('#amount').val());			
 	      });
 
 	      $('.check').live('change', function(){
@@ -62,13 +62,13 @@
 		        charities = 0; 
 		    }
 
-			initPie(charities.length);
+			initPie(charities.length, $('#amount').val());
 	      });
 	 });
 
 
 
-	initPie(0);	
+	initPie(0, $('#amount').val());	
 
   });
 </script>
