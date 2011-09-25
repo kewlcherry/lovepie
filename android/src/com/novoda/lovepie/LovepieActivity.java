@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -27,6 +28,9 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -34,13 +38,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LovepieActivity extends RoboActivity implements OnClickListener {
+public class LovepieActivity extends RoboActivity implements OnClickListener, OnItemClickListener, OnItemLongClickListener {
 	@InjectView(R.id.amount_field) EditText amount;
 	@InjectView(R.id.paypal_layout) RelativeLayout payPalLayout;
 	@InjectView(R.id.charity_list) ListView list;
 	@InjectView(R.id.progress) ProgressBar progress;
 	@InjectView(R.id.loading_text) TextView loadingText;
 	@InjectResource(R.string.loading_fail) String loadingFail;
+	@InjectResource(R.color.selected) Integer selectedId;
+	@InjectResource(R.color.white) Integer unselectedId;
 	
 	private static final int REQUEST_CODE = 1;
 	private static final int MAX_TRIES = 30;
@@ -51,6 +57,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener {
 	private int tries = 0;
 	
 	private List<Charity> charityList;
+	private ArrayList<Boolean> selectedPositions = new ArrayList<Boolean>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -164,9 +171,13 @@ public class LovepieActivity extends RoboActivity implements OnClickListener {
 	    
 	    @Override
 	    protected void onSuccess(Void v) {
-	    	
 	    	charityList = charities;
-	    	list.setAdapter(new CharityAdapter(LovepieActivity.this, charityList));
+	    	for (int i = 0; i < charityList.size(); i++) {
+	    		selectedPositions.add(false);
+	    	}
+	    	list.setAdapter(new CharityAdapter(LovepieActivity.this, charityList, selectedPositions));
+	    	list.setOnItemClickListener(LovepieActivity.this);
+	    	list.setOnItemLongClickListener(LovepieActivity.this);
 	    }
 	    
 	    @Override 
@@ -174,5 +185,23 @@ public class LovepieActivity extends RoboActivity implements OnClickListener {
 	    	// Remove spinner
 	    } 
 	}
-    
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		if (selectedPositions.get(position)) {
+			selectedPositions.set(position, false);
+			view.setBackgroundColor(unselectedId);
+		} else {
+			selectedPositions.set(position, true);
+			view.setBackgroundColor(selectedId);
+		}
+		
+	}
+
+	@Override
+	public boolean onItemLongClick(AdapterView<?> parent, View view, int position,long id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 }

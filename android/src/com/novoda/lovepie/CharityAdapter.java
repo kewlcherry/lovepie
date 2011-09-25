@@ -1,5 +1,6 @@
 package com.novoda.lovepie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.novoda.imageloader.core.ImageManager;
@@ -16,12 +17,14 @@ public class CharityAdapter extends ArrayAdapter<Charity> {
 	
 	private Activity context;
 	private List<Charity> charities;
+	private ArrayList<Boolean> selected;
 	private ImageManager imageLoader;
 	
-	public CharityAdapter(Activity context, List<Charity> charities) {
+	public CharityAdapter(Activity context, List<Charity> charities, ArrayList<Boolean> selected) {
 		super(context, R.layout.list_charity, charities);
 		this.context = context;
 		this.charities = charities;
+		this.selected = selected;
 		imageLoader = LovepieApplication.getImageLoader();
 	}
 	
@@ -45,6 +48,12 @@ public class CharityAdapter extends ArrayAdapter<Charity> {
 		ImageView imView = holder.getImage();
 		imView.setTag(charityData.getLogo_path());
 		imageLoader.load(charityData.getLogo_path(), context, imView);
+		
+		if (selected.get(position)) {
+			charity.setBackgroundColor(context.getResources().getColor(R.color.selected));
+		} else {
+			charity.setBackgroundColor(context.getResources().getColor(R.color.white));
+		}
 		
 		return charity;
 	}
