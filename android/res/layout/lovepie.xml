@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/Fill"
+	android:background="@drawable/background_noise">
+	
+    <ImageView android:id="@+id/logo"
+    	style="@style/logo" />
+		    	
+    <TextView android:id="@+id/donate_text"
+    	style="@style/main_text"
+    	android:text="@string/donate"
+    	android:layout_marginBottom="10dp"
+    	android:layout_below="@id/logo" />
+    	
+    <RelativeLayout android:id="@+id/amount_layout"
+    	style="@style/WrapHeight"
+    	android:layout_below="@id/donate_text">
+    	    
+	    <TextView android:id="@+id/currency_text"
+	    	style="@style/currency_text"
+	    	android:text="£" />
+	    	
+	    <EditText android:id="@+id/amount_field"
+	    	style="@style/amount_field"
+	    	android:layout_toRightOf="@id/currency_text"
+	    	android:layout_centerVertical="true" />
+    </RelativeLayout>
+    	    	
+	<TextView android:id="@+id/to_text"
+    	style="@style/main_text"
+    	android:text="@string/to"
+    	android:layout_below="@id/amount_layout" />
+    	
+    <RelativeLayout android:id="@+id/paypal_layout"
+    	style="@style/paypal_layout"
+    	android:layout_alignParentBottom="true"
+    	android:gravity="center">
+    	
+    	<ProgressBar android:id="@+id/progress"
+    		style="?android:attr/android:progressBarStyleSmall"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_centerVertical="true"
+    		android:layout_marginLeft="15dp"
+    		android:layout_marginRight="10dp" />
+    		    		    	    	
+    	<TextView android:id="@+id/loading_text"
+    		style="@style/loading_text"
+    		android:text="@string/loading"
+    		android:layout_toRightOf="@id/progress" />
+    </RelativeLayout>
+    	
+    <ListView android:id="@+id/charity_list"
+    	style="@style/charity_list"
+    	android:layout_below="@id/to_text"
+    	android:layout_above="@id/paypal_layout" />
+      
+</RelativeLayout>

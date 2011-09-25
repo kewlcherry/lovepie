@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <dimen name="gutter">10dp</dimen>
-    <dimen name="logo_gutter">20dp</dimen>
+    <dimen name="gutter">20dp</dimen>
 </resources>
