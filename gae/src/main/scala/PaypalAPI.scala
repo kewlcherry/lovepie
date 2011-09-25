@@ -1,6 +1,6 @@
 package lovep.ie.paypal.api
 
-import dispatch.{:/, url, Http}
+import dispatch.{url, Http}
 
 sealed class Email(email: String)
 
@@ -11,7 +11,7 @@ class Receiver(var amount: Int, var email: String, var invoiceId: String)
 trait PaypalApi {
 }
 
-class ParallelPayment(u: Email, f: Receiver*) {
+class ParallelPayment {
 
   implicit def paypalToMap(p: Paypal): Map[String, String] =
     Map("X-PAYPAL-SECURITY-USERID" -> p.userId, "X-PAYPAL-SECURITY-PASSWORD" -> p.password, "X-PAYPAL-SECURITY-SIGNATURE" -> p.sig, "X-PAYPAL-REQUEST-DATA-FORMAT" -> "NV", "X-PAYPAL-RESPONSE-DATA-FORMAT" -> "json", "X-PAYPAL-APPLICATION-ID" -> p.appId)
@@ -26,9 +26,9 @@ class ParallelPayment(u: Email, f: Receiver*) {
     "reverseAllParallelPaymentsOnError" -> "false",
     "senderEmail" -> "test1_1316892066_per@novoda.com")
 
-  val h = new Http
+  val h = new dispatch.Http
 
-  def exectue = {
+  def execute = {
     val ppurl = url("https://svcs.sandbox.paypal.com/AdaptivePayments/Pay") <:< new Paypal <<? Map("actionType" -> "PAY",
       "cancelUrl" -> "http://love-pie.appspot.com/cancel",
       "currencyCode" -> "GBP",
@@ -44,7 +44,19 @@ class ParallelPayment(u: Email, f: Receiver*) {
       "returnUrl" -> "http://google.com",
       "reverseAllParallelPaymentsOnError" -> "false")
 
-    val s = h(ppurl as_str)
 
+    import dispatch.liftjson.Js._
+
+    import net.liftweb.json.JsonAST._
+
+   // val h = new Http
+    val s = h(ppurl ># {
+      json =>
+         for {
+          JField("payKey", JString(payKey)) <- json
+        } yield (payKey)
+    })
+    h.shutdown()
+    Some(s.head)
   }
 }

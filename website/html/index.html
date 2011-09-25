@@ -30,10 +30,11 @@
 <script type="text/javascript" src="pie.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.pie.js"></script>
+<script language="javascript" type="text/javascript" src="https://raw.github.com/malsup/blockui/master/jquery.blockUI.js"></script>
 <script>
   $(document).ready(function(){
 
-	$.getJSON('../fixtures/fromLovepieBackend/charities.json', function(data) {		
+	$.getJSON('/charity', function(data) {
 	  $.each(data, function(key, val) {
 		$("#charity_list").prepend('<li id="' + key + '"><input type="checkbox" class="check" name="' + val.nonprofit_name+'" value="'+val.token_for_invoice_id+'"/>' + val.nonprofit_name+'</li>')		
 	  })

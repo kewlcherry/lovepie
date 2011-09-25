@@ -78,7 +78,7 @@ div.graph {
 	background-image:url(heart.png);
 	background-color:transparent;
 	position:relative;
-	z-index:9999;
+	z-index:9;
 }
 
 #heart-pie {

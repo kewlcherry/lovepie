@@ -2,10 +2,10 @@ package lovep.ie
 
 import javax.servlet.http.{HttpServletResponse, HttpServletRequest, HttpServlet}
 import org.scalatra.ScalatraServlet
+import paypal.api.ParallelPayment
 
-class Landing extends HttpServlet {
-
-  def json = """
+class LovePieServlet extends ScalatraServlet {
+  val json = """
   [
     {
         "nonprofit_name": "Barnardo's",
@@ -90,14 +90,17 @@ class Landing extends HttpServlet {
 ]
   """
 
-  override def doGet(req:HttpServletRequest, resp: HttpServletResponse) {
-    resp.setContentType("application/json");
-    resp.getWriter().println(json);
-  }
-}
-
-class CharityServlet extends ScalatraServlet {
   get("/") {
-    <h1>Hello, world!</h1>
+    //layoutTemplate("index.jade", "content" -> "teste")
+  }
+
+  get("/charity") {
+    json
+  }
+
+  post("/donate") {
+    //_ gives 100 to xxx as broker carl@novoda.com
+    params
+    new ParallelPayment().execute.getOrElse("error")
   }
 }
