@@ -42,7 +42,9 @@ function initPie(charities, total){
 }	
 
 function submitToServer(){
-$.blockUI({ css: {
+$.blockUI({
+    message:  '<h1>Doing some awesome Paypal API stuff...</h1><b>You ll be redirected to paypal as soon as this finishes</b>',
+    css: {
             border: 'none',
             padding: '15px',
             backgroundColor: '#000',
@@ -50,7 +52,8 @@ $.blockUI({ css: {
             '-moz-border-radius': '10px',
             opacity: .5,
             color: '#fff'
-        } });
+        }
+    });
   	var params = "";	
     var charities = $('input[@type=checkbox]:checked').map(function(i,n) {
         return $(n).val();

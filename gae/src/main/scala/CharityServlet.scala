@@ -24,14 +24,6 @@ class LovePieServlet extends ScalatraServlet {
         "token_for_invoice_id": "M123456|1"
     },
     {
-        "nonprofit_name": "Cancer Research UK",
-        "statement": "Cancer Research UK is the world's leading charity dedicated to research on the causes, treatment and prevention of cancer. Thanks to research, more people are surviving cancer than ever before.",
-        "logo_path": "http://donationsstatic.ebay.com/extend/logos/MF10650.jpg",
-        "receiver_email": "INVALID-TEST-ACCOUNT@cancer.org.uk",
-        "web_url": "www.cancerresearchuk.org",
-        "token_for_invoice_id": "M123456|10650"
-    },
-    {
         "nonprofit_name": "Comic Relief - Red Nose Day",
         "statement": "Comic Relief spends all the money raised through Red Nose Day to help  vulnerable, poor and disadvantaged people in the UK and Africa turn their lives around. On their behalf, thank you.   Comic Relief, registered charity 326568 (England/Wales); SC039730 (Scotland)",
         "logo_path": "http://donationsstatic.ebay.com/extend/logos/MF18549.jpg",
@@ -91,7 +83,15 @@ class LovePieServlet extends ScalatraServlet {
   """
 
   get("/") {
-    //layoutTemplate("index.jade", "content" -> "teste")
+    redirect("http://love-pie.appspot.com/static/index.html")
+  }
+
+  get("/success") {
+    redirect("http://love-pie.appspot.com/static/success.html")
+  }
+
+  get("/cancel") {
+    redirect("http://love-pie.appspot.com/static/cancel.html")
   }
 
   get("/charity") {
@@ -100,7 +100,15 @@ class LovePieServlet extends ScalatraServlet {
 
   post("/donate") {
     //_ gives 100 to xxx as broker carl@novoda.com
-    params
-    new ParallelPayment().execute.getOrElse("error")
+    val amount = params.get("amount").get.toInt
+    val np = params - "amount"
+    val size = params.size - 1
+    import lovep.ie.paypal.api.Receiver
+    val receivers = np.collect {
+      //case ("amount", am: String) => amount = am.toInt
+      case (name: String, invoiceId: String) => new Receiver(amount / size, "test_%s@novoda.com".format(scala.util.Random.nextInt(1024)), "MissionFish donation %s on behalf of %s" format(invoiceId, name))
+      //case _ => None
+    }
+    new ParallelPayment(scala.Math.round(amount / size), receivers.toList).execute.getOrElse("error")
   }
 }
