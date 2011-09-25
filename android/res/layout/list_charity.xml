@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/li_charity"
+	style="@style/list_item">
+	
+	<ImageView android:id="@+id/list_image"
+		style="@style/list_image" />
+		
+	<TextView android:id="@+id/list_title" 
+		style="@style/list_title" 
+		android:layout_toRightOf="@id/list_image" />
+		
+	<TextView android:id="@+id/list_body"
+		style="@style/list_body" 
+		android:layout_toRightOf="@id/list_image"
+		android:layout_below="@id/list_title" />
+		
+</RelativeLayout>

@@ -2,4 +2,6 @@
 
 <resources>
     <dimen name="gutter">20dp</dimen>
+    <dimen name="bar_height">2dp</dimen>
+    <dimen name="li_height">70dp</dimen>
 </resources>

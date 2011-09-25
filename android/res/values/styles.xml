@@ -30,9 +30,10 @@
     </style>
     
     <style name="logo" parent="Wrap">
-    	<item name="android:layout_height">120dp</item>
-    	<item name="android:layout_marginTop">15dp</item>
-    	<item name="android:padding">@dimen/gutter</item>
+    	<item name="android:layout_height">100dp</item>
+    	<item name="android:layout_marginTop">10dp</item>
+    	<item name="android:layout_marginLeft">@dimen/gutter</item>
+    	<item name="android:layout_marginRight">@dimen/gutter</item>
     	<item name="android:src">@drawable/logo_transparent</item>
     	<item name="android:scaleType">centerInside</item>
     	<item name="android:focusable">true</item>
@@ -63,11 +64,13 @@
 		<item name="android:layout_width">125dp</item>
 		<item name="android:layout_marginLeft">15dp</item>
 		<item name="android:inputType">number</item>
+		<item name="android:imeOptions">actionDone</item>
 		<item name="android:singleLine">true</item>
     </style>
     
     <style name="charity_list" parent="Fill">
-    
+    	<item name="android:background">@color/white</item>
+    	<item name="android:cacheColorHint">@color/white</item>
     </style>
     
     <style name="loading_text" parent="text">
@@ -79,6 +82,41 @@
     	<item name="android:layout_marginRight">@dimen/gutter</item>
     	<item name="android:layout_height">45dp</item>
     	<item name="android:layout_margin">5dp</item>
+    </style>
+    
+    <style name="bar" parent="WrapHeight">
+    	<item name="android:layout_height">@dimen/bar_height</item>
+    	<item name="android:background">@color/lovepie_brown</item>
+    </style>
+    
+    <style name="list_item" parent="WrapHeight">
+    	<item name="android:layout_height">@dimen/li_height</item>
+    </style>
+    
+    <style name="list_image" parent="Wrap">
+    	<item name="android:layout_width">@dimen/li_height</item>
+    	<item name="android:layout_height">@dimen/li_height</item>
+    	<item name="android:layout_alignParentTop">true</item>
+    	<item name="android:layout_alignParentLeft">true</item>
+    	<item name="android:background">@color/white</item>
+    	<item name="android:padding">5dp</item>
+    </style>
+    
+    <style name="list_title" parent="WrapHeight">
+    	<item name="android:singleLine">true</item>
+    	<item name="android:ellipsize">end</item>
+    	<item name="android:textStyle">bold</item>
+    	<item name="android:layout_marginRight">5dp</item>
+    	<item name="android:layout_marginLeft">5dp</item>
+    	<item name="android:layout_marginTop">5dp</item>
+    </style>
+    
+    <style name="list_body" parent="WrapHeight">
+    	<item name="android:ellipsize">end</item>
+    	<item name="android:textColor">@color/lovepie_brown</item>
+    	<item name="android:layout_marginRight">5dp</item>
+    	<item name="android:layout_marginLeft">5dp</item>
+    	<item name="android:layout_marginBottom">5dp</item>
     </style>
  
 </resources>

@@ -4,4 +4,5 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="lovepie_brown">#75583c</color>
+    <color name="selected">#ffe1a4</color>
 </resources>
