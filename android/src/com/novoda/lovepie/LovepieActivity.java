@@ -52,6 +52,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	@InjectView(R.id.charity_list) ListView list;
 	@InjectView(R.id.progress) ProgressBar progress;
 	@InjectView(R.id.loading_text) TextView loadingText;
+	@InjectView(R.id.big_progress) RelativeLayout bigLoad;
 	@InjectResource(R.string.loading_fail) String loadingFail;
 	@InjectResource(R.color.selected) Integer selectedId;
 	@InjectResource(R.color.white) Integer unselectedId;
@@ -94,11 +95,12 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	private ArrayList<Boolean> selectedPositions = new ArrayList<Boolean>();
 	
 	private void randomList() {
-		
-		vibrator.vibrate(1000);
-		randomise();
-		while (getNumSelected() > 6 || getNumSelected() == 0) {
+		if (charityList != null) {
+			vibrator.vibrate(1000);
 			randomise();
+			while (getNumSelected() > 6 || getNumSelected() == 0) {
+				randomise(); 
+			}
 		}
 	}
 
@@ -263,11 +265,6 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	        	e.printStackTrace();
 	        }
 		}
-
-		@Override 
-	    protected void onPreExecute() { 
-			// Spinner
-	    } 
 	    
 	    @Override 
 	    protected void onException(Exception e) { 
@@ -287,7 +284,7 @@ public class LovepieActivity extends RoboActivity implements OnClickListener, On
 	    
 	    @Override 
 	    protected void onFinally() { 
-	    	// Remove spinner
+	    	bigLoad.setVisibility(View.GONE);
 	    } 
 	}
 	
