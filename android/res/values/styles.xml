@@ -29,6 +29,10 @@
     	<item name="android:orientation">vertical</item>
     </style>
     
+    <style name="Activity" parent="Fill.Vertical">
+    	<item name="android:background">@drawable/background_noise</item>
+    </style>
+    
     <style name="logo" parent="Wrap">
     	<item name="android:layout_height">100dp</item>
     	<item name="android:layout_marginTop">10dp</item>
@@ -38,6 +42,10 @@
     	<item name="android:scaleType">centerInside</item>
     	<item name="android:focusable">true</item>
     	<item name="android:focusableInTouchMode">true</item>
+    </style>
+    
+    <style name="mini_logo" parent="logo">
+    	<item name="android:layout_height">40dp</item>
     </style>
     
     <style name="text" parent="WrapHeight">
@@ -52,6 +60,11 @@
     
     <style name="main_text" parent="text">
     	<item name="android:layout_marginLeft">@dimen/gutter</item>
+    </style>
+    
+    <style name="aux_text" parent="text">
+    	<item name="android:textSize">18sp</item>
+    	<item name="android:textStyle">normal</item>
     </style>
     
     <style name="currency_text" parent="text">
